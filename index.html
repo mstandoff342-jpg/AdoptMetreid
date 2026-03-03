@@ -1,0 +1,371 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Adopt Me | Liza6666</title>
+    <style>
+        /* ========== ОБЩИЕ СТИЛИ ========== */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+        }
+
+        body {
+            min-height: 100vh;
+            background-color: #684a77; /* ФИОЛЕТОВЫЙ ФОН (как на твоем скрине) */
+            display: flex;
+            justify-content: center;
+            padding: 20px;
+        }
+
+        .container {
+            max-width: 800px;
+            width: 100%;
+        }
+
+        /* ========== КАРТОЧКА ПРОФИЛЯ ========== */
+        .profile-card {
+            background: rgba(255, 230, 240, 0.25);
+            backdrop-filter: blur(10px);
+            border: 2px solid rgba(255, 255, 255, 0.3);
+            border-radius: 40px;
+            padding: 30px;
+            box-shadow: 0 20px 40px rgba(255, 150, 180, 0.2);
+            margin-bottom: 20px;
+        }
+
+        .profile-header {
+            display: flex;
+            align-items: center;
+            gap: 25px;
+            margin-bottom: 20px;
+            flex-wrap: wrap;
+        }
+
+        .avatar-circle {
+            width: 100px;
+            height: 100px;
+            background: white;
+            border: 3px solid white;
+            border-radius: 50%;
+            box-shadow: 0 0 20px #ff69b4, 0 0 40px #ffb6c1;
+        }
+
+        .info-stats-wrapper {
+            flex: 1;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            flex-wrap: wrap;
+            gap: 20px;
+        }
+
+        .user-info h1 {
+            font-size: 38px;
+            color: white;
+            text-shadow: 2px 2px 0 #ff8aae;
+            font-weight: 700;
+            margin-bottom: 5px;
+        }
+
+        .user-info h2 {
+            font-size: 18px;
+            color: rgba(255, 255, 255, 0.9);
+            font-weight: 400;
+            letter-spacing: 0.5px;
+        }
+
+        .stats-row {
+            display: flex;
+            gap: 25px;
+            background: rgba(255, 255, 255, 0.15);
+            padding: 12px 25px;
+            border-radius: 50px;
+            border: 1px solid rgba(255, 255, 255, 0.3);
+            backdrop-filter: blur(5px);
+        }
+
+        .stat-item {
+            text-align: center;
+            min-width: 70px;
+        }
+
+        .stat-value {
+            font-size: 22px;
+            font-weight: 700;
+            color: white;
+            text-shadow: 1px 1px 0 #ff8aae;
+            line-height: 1.2;
+        }
+
+        .stat-label {
+            font-size: 12px;
+            color: rgba(255, 255, 255, 0.9);
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+        }
+
+        .divider {
+            height: 2px;
+            background: rgba(255, 255, 255, 0.3);
+            margin: 25px 0;
+            width: 100%;
+        }
+
+        .content-area {
+            min-height: 200px;
+            margin-top: 20px;
+        }
+
+        /* ========== ПРИВЕТСТВИЕ ========== */
+        .greeting-card {
+            background: rgba(255, 230, 240, 0.2);
+            backdrop-filter: blur(8px);
+            border: 2px solid rgba(255, 255, 255, 0.3);
+            border-radius: 60px;
+            padding: 30px 40px;
+            text-align: center;
+            box-shadow: 0 20px 40px rgba(255, 150, 180, 0.3);
+            margin-bottom: 20px;
+        }
+
+        .glow-text {
+            font-size: 28px;
+            font-weight: 600;
+            color: white;
+            text-shadow: 
+                0 0 10px #ff69b4,
+                0 0 20px #ff69b4,
+                0 0 30px #ffb6c1,
+                0 0 40px #ffb6c1;
+            line-height: 1.4;
+            letter-spacing: 0.5px;
+        }
+
+        .glow-text .small {
+            font-size: 22px;
+            display: block;
+            margin-top: 15px;
+            text-shadow: 
+                0 0 8px #ff69b4,
+                0 0 15px #ffb6c1;
+        }
+
+        .glow-text .highlight {
+            font-size: 32px;
+            font-weight: 700;
+            display: block;
+            margin: 10px 0;
+            text-shadow: 
+                0 0 15px #ff1493,
+                0 0 30px #ff69b4,
+                0 0 45px #ffb6c1;
+        }
+
+        /* ========== ОВАЛ СО СТРЕЛКАМИ ========== */
+        .arrows-container {
+            display: flex;
+            justify-content: center;
+            gap: 20px;
+            margin: 15px 0 5px;
+        }
+
+        .arrow-down {
+            font-size: 40px;
+            color: white;
+            text-shadow: 
+                0 0 10px #ff69b4,
+                0 0 20px #ff69b4,
+                0 0 30px #ffb6c1;
+            animation: bounce 2s infinite;
+            display: inline-block;
+        }
+
+        .arrow-down:nth-child(2) {
+            animation-delay: 0.3s;
+        }
+
+        .arrow-down:nth-child(3) {
+            animation-delay: 0.6s;
+        }
+
+        @keyframes bounce {
+            0%, 20%, 50%, 80%, 100% { transform: translateY(0); }
+            40% { transform: translateY(10px); }
+            60% { transform: translateY(5px); }
+        }
+
+        .oval-box {
+            background: transparent;
+            border: 2px solid white;
+            border-radius: 60px;
+            padding: 25px 35px;
+            box-shadow: 0 0 20px rgba(255, 105, 180, 0.5);
+            margin: 20px 0;
+        }
+
+        .oval-text {
+            font-size: 28px;
+            font-weight: 600;
+            color: white;
+            text-shadow: 
+                0 0 10px #ff69b4,
+                0 0 20px #ff69b4,
+                0 0 30px #ffb6c1;
+            line-height: 1.5;
+            letter-spacing: 0.5px;
+            text-align: center;
+        }
+
+        .oval-text .small {
+            font-size: 22px;
+            display: block;
+            margin-top: 10px;
+            text-shadow: 
+                0 0 8px #ff69b4,
+                0 0 15px #ffb6c1;
+        }
+
+        /* ========== RGB КВАДРАТЫ ========== */
+        .rgb-square {
+            width: 500px;
+            height: 500px;
+            border: 4px solid white;
+            border-radius: 30px;
+            background: transparent;
+            box-shadow: 
+                0 0 20px #ff0000,
+                0 0 40px #00ff00,
+                0 0 60px #0000ff,
+                0 0 80px #ff00ff;
+            animation: rgbGlow 4s infinite alternate;
+            margin: 20px auto;
+        }
+
+        @keyframes rgbGlow {
+            0% { box-shadow: 0 0 20px #ff0000, 0 0 40px #00ff00, 0 0 60px #0000ff; }
+            25% { box-shadow: 0 0 20px #ff00ff, 0 0 40px #00ffff, 0 0 60px #ffff00; }
+            50% { box-shadow: 0 0 20px #00ffff, 0 0 40px #ff00ff, 0 0 60px #ff0000; }
+            75% { box-shadow: 0 0 20px #ffff00, 0 0 40px #ff0000, 0 0 60px #00ff00; }
+            100% { box-shadow: 0 0 20px #0000ff, 0 0 40px #ff00ff, 0 0 60px #00ffff; }
+        }
+
+        /* ========== АДАПТАЦИЯ ДЛЯ МОБИЛЬНЫХ ========== */
+        @media (max-width: 600px) {
+            .profile-header {
+                flex-direction: column;
+                text-align: center;
+            }
+            .info-stats-wrapper {
+                flex-direction: column;
+                align-items: center;
+            }
+            .stats-row {
+                width: 100%;
+                justify-content: space-around;
+            }
+            .avatar-circle {
+                width: 80px;
+                height: 80px;
+            }
+            .user-info h1 {
+                font-size: 32px;
+            }
+            .glow-text {
+                font-size: 24px;
+            }
+            .glow-text .small {
+                font-size: 18px;
+            }
+            .glow-text .highlight {
+                font-size: 28px;
+            }
+            .oval-box {
+                padding: 20px;
+            }
+            .oval-text {
+                font-size: 24px;
+            }
+            .oval-text .small {
+                font-size: 18px;
+            }
+            .arrow-down {
+                font-size: 30px;
+            }
+            .rgb-square {
+                width: 400px;
+                height: 400px;
+            }
+        }
+
+        @media (max-width: 450px) {
+            .rgb-square {
+                width: 300px;
+                height: 300px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <!-- ========== КАРТОЧКА ПРОФИЛЯ ========== -->
+        <div class="profile-card">
+            <div class="profile-header">
+                <div class="avatar-circle"></div>
+                <div class="info-stats-wrapper">
+                    <div class="user-info">
+                        <h1>Liza6666</h1>
+                        <h2>Pro Trader • Looking for trades</h2>
+                    </div>
+                    <div class="stats-row">
+                        <div class="stat-item">
+                            <div class="stat-value">2.5K</div>
+                            <div class="stat-label">FOLLOW</div>
+                        </div>
+                        <div class="stat-item">
+                            <div class="stat-value">168</div>
+                            <div class="stat-label">ОБМЕНОВ</div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="divider"></div>
+            <div class="content-area">
+                <!-- Сюда будешь добавлять своих питомцев -->
+            </div>
+        </div>
+
+        <!-- ========== ПРИВЕТСТВИЕ ========== -->
+        <div class="greeting-card">
+            <div class="glow-text">
+                <span class="red">🔴 Привет! 🔴</span>
+                <br>
+                это мой трейд аккаунт в
+                <div class="highlight">Adopt Me!</div>
+                <div class="small">Добавляйся в друзья для обмена 🎁</div>
+            </div>
+        </div>
+
+        <!-- ========== ОВАЛ С ТЕКСТОМ ========== -->
+        <div class="oval-box">
+            <div class="oval-text">
+                Вот какие трейды
+                <br>
+                я могу тебе
+                <br>
+                предложить
+                <span class="small">🎁 выбирай 🎁</span>
+            </div>
+        </div>
+
+        <!-- ========== ЧЕТЫРЕ RGB КВАДРАТА ДЛЯ ПИТОМЦЕВ ========== -->
+        <div class="rgb-square"></div>
+        <div class="rgb-square"></div>
+        <div class="rgb-square"></div>
+        <div class="rgb-square"></div>
+    </div>
+</body>
+</html>
