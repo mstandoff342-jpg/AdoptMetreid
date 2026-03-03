@@ -52,13 +52,13 @@
             border: 3px solid white;
             border-radius: 50%;
             box-shadow: 0 0 20px #ff69b4, 0 0 40px #ffb6c1;
-            overflow: hidden; /* Чтобы фото не вылезало за круг */
+            overflow: hidden;
         }
 
         .avatar-circle img {
             width: 100%;
             height: 100%;
-            object-fit: cover; /* Фото заполнит весь круг */
+            object-fit: cover;
             display: block;
         }
 
@@ -128,19 +128,13 @@
             margin-top: 20px;
         }
 
-        /* ========== ПРИВЕТСТВИЕ ========== */
-        .greeting-card {
-            background: rgba(255, 230, 240, 0.2);
-            backdrop-filter: blur(8px);
-            border: 2px solid rgba(255, 255, 255, 0.3);
-            border-radius: 60px;
-            padding: 30px 40px;
+        /* ========== ПРИВЕТСТВИЕ (БЕЗ ОВАЛА) ========== */
+        .greeting-block {
+            margin: 30px 0 20px;
             text-align: center;
-            box-shadow: 0 20px 40px rgba(255, 150, 180, 0.3);
-            margin-bottom: 20px;
         }
 
-        .glow-text {
+        .greeting-text {
             font-size: 28px;
             font-weight: 600;
             color: white;
@@ -153,32 +147,30 @@
             letter-spacing: 0.5px;
         }
 
-        .glow-text .red {
+        .greeting-text span {
             color: #ff4d4d;
             text-shadow: 0 0 10px #ff4d4d, 0 0 20px #ff4d4d;
         }
 
-        .glow-text .small {
-            font-size: 22px;
-            display: block;
-            margin-top: 15px;
-            text-shadow: 
-                0 0 8px #ff69b4,
-                0 0 15px #ffb6c1;
-        }
-
-        .glow-text .highlight {
+        .greeting-text .highlight {
             font-size: 32px;
             font-weight: 700;
-            display: block;
-            margin: 10px 0;
+            margin: 5px 0;
             text-shadow: 
                 0 0 15px #ff1493,
                 0 0 30px #ff69b4,
                 0 0 45px #ffb6c1;
         }
 
-        /* ========== ОВАЛ ========== */
+        .greeting-text .small {
+            font-size: 22px;
+            margin-top: 10px;
+            text-shadow: 
+                0 0 8px #ff69b4,
+                0 0 15px #ffb6c1;
+        }
+
+        /* ========== ОВАЛ С ТЕКСТОМ ========== */
         .oval-box {
             background: transparent;
             border: 2px solid white;
@@ -255,13 +247,13 @@
             .user-info h1 {
                 font-size: 32px;
             }
-            .glow-text {
+            .greeting-text {
                 font-size: 24px;
             }
-            .glow-text .small {
+            .greeting-text .small {
                 font-size: 18px;
             }
-            .glow-text .highlight {
+            .greeting-text .highlight {
                 font-size: 28px;
             }
             .oval-box {
@@ -292,7 +284,7 @@
         <!-- ========== КАРТОЧКА ПРОФИЛЯ ========== -->
         <div class="profile-card">
             <div class="profile-header">
-                <!-- АВАТАРКА С ФОТО (avatar.jpg лежит в той же папке) -->
+                <!-- АВАТАРКА С ФОТО -->
                 <div class="avatar-circle">
                     <img src="avatar.jpg" alt="Liza6666">
                 </div>
@@ -319,14 +311,14 @@
             </div>
         </div>
 
-        <!-- ========== ПРИВЕТСТВИЕ ========== -->
-        <div class="greeting-card">
-            <div class="glow-text">
-                <span class="red">🔴 Привет! 🔴</span>
+        <!-- ========== ПРИВЕТСТВИЕ (ПОДНЯЛ ВВЕРХ, УБРАЛ ОВАЛ) ========== -->
+        <div class="greeting-block">
+            <div class="greeting-text">
+                <span>Привет!</span>
                 <br>
                 это мой трейд аккаунт в
                 <div class="highlight">Adopt Me!</div>
-                <div class="small">Добавляйся в друзья для обмена 🎁</div>
+                <div class="small">Добавляйся в друзья для обмена</div>
             </div>
         </div>
 
