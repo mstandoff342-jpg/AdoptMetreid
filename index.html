@@ -214,7 +214,7 @@
             100% { box-shadow: 0 0 20px #0000ff, 0 0 40px #ff00ff, 0 0 60px #00ffff; }
         }
 
-        /* ===== НАДПИСЬ LEGENDARY С ЧЕРНЫМ СВЕЧЕНИЕМ И ТОЧКАМИ ===== */
+        /* ===== НАДПИСЬ LEGENDARY С УМЕНЬШЕННЫМ СВЕЧЕНИЕМ ===== */
         .legendary-title {
             display: flex;
             align-items: center;
@@ -228,7 +228,7 @@
             height: 8px;
             background-color: black;
             border-radius: 50%;
-            box-shadow: 0 0 15px black, 0 0 30px black;
+            box-shadow: 0 0 5px black, 0 0 10px black; /* Уменьшил свечение */
         }
 
         .legendary-title span {
@@ -236,10 +236,8 @@
             font-weight: 800;
             color: black;
             text-shadow: 
-                0 0 10px black,
-                0 0 20px black,
-                0 0 30px black,
-                0 0 40px rgba(0, 0, 0, 0.8);
+                0 0 5px black,
+                0 0 10px black; /* Уменьшил свечение с 30px до 10px */
             letter-spacing: 2px;
             text-transform: uppercase;
         }
@@ -471,7 +469,7 @@
         <div class="squares-container">
             <!-- ПЕРВЫЙ КВАДРАТ С ДРАКОНОМ -->
             <div class="rgb-square">
-                <!-- НАДПИСЬ LEGENDARY С ЧЕРНЫМИ ТОЧКАМИ -->
+                <!-- НАДПИСЬ LEGENDARY С УМЕНЬШЕННЫМ СВЕЧЕНИЕМ -->
                 <div class="legendary-title">
                     <span class="dot"></span>
                     <span>LEGENDARY</span>
