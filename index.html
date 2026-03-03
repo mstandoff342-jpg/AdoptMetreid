@@ -15,88 +15,26 @@
 
         body {
             min-height: 100vh;
-            background-color: #ffd9e6; /* Мягко-розовый фон */
+            background-color: #684a77;
             display: flex;
             justify-content: center;
             padding: 20px;
             position: relative;
-            overflow-x: hidden;
-        }
-
-        /* ===== СТАТИЧНЫЕ БЕЛЫЕ СЕРДЕЧКА ===== */
-        body::before {
-            content: '';
-            position: fixed;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            background-image: 
-                radial-gradient(circle at 10% 20%, rgba(255, 255, 255, 0.5) 2px, transparent 2px),
-                radial-gradient(circle at 25% 45%, rgba(255, 255, 255, 0.5) 2px, transparent 2px),
-                radial-gradient(circle at 40% 15%, rgba(255, 255, 255, 0.5) 2px, transparent 2px),
-                radial-gradient(circle at 55% 60%, rgba(255, 255, 255, 0.5) 2px, transparent 2px),
-                radial-gradient(circle at 70% 25%, rgba(255, 255, 255, 0.5) 2px, transparent 2px),
-                radial-gradient(circle at 85% 70%, rgba(255, 255, 255, 0.5) 2px, transparent 2px),
-                radial-gradient(circle at 15% 80%, rgba(255, 255, 255, 0.5) 2px, transparent 2px),
-                radial-gradient(circle at 30% 90%, rgba(255, 255, 255, 0.5) 2px, transparent 2px),
-                radial-gradient(circle at 50% 35%, rgba(255, 255, 255, 0.5) 2px, transparent 2px),
-                radial-gradient(circle at 65% 50%, rgba(255, 255, 255, 0.5) 2px, transparent 2px),
-                radial-gradient(circle at 80% 85%, rgba(255, 255, 255, 0.5) 2px, transparent 2px),
-                radial-gradient(circle at 95% 10%, rgba(255, 255, 255, 0.5) 2px, transparent 2px),
-                radial-gradient(circle at 5% 95%, rgba(255, 255, 255, 0.5) 2px, transparent 2px),
-                radial-gradient(circle at 45% 75%, rgba(255, 255, 255, 0.5) 2px, transparent 2px),
-                radial-gradient(circle at 75% 15%, rgba(255, 255, 255, 0.5) 2px, transparent 2px),
-                radial-gradient(circle at 20% 55%, rgba(255, 255, 255, 0.5) 2px, transparent 2px),
-                radial-gradient(circle at 60% 80%, rgba(255, 255, 255, 0.5) 2px, transparent 2px),
-                radial-gradient(circle at 90% 40%, rgba(255, 255, 255, 0.5) 2px, transparent 2px),
-                radial-gradient(circle at 35% 10%, rgba(255, 255, 255, 0.5) 2px, transparent 2px),
-                radial-gradient(circle at 82% 92%, rgba(255, 255, 255, 0.5) 2px, transparent 2px),
-                radial-gradient(circle at 12% 33%, rgba(255, 255, 255, 0.5) 2px, transparent 2px),
-                radial-gradient(circle at 68% 67%, rgba(255, 255, 255, 0.5) 2px, transparent 2px),
-                radial-gradient(circle at 43% 88%, rgba(255, 255, 255, 0.5) 2px, transparent 2px),
-                radial-gradient(circle at 77% 44%, rgba(255, 255, 255, 0.5) 2px, transparent 2px);
-            background-size: 200px 200px;
-            pointer-events: none;
-            z-index: 0;
-        }
-
-        /* Дополнительный слой с крупными сердечками */
-        body::after {
-            content: '❤️';
-            position: fixed;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            font-size: 24px;
-            color: rgba(255, 255, 255, 0.3);
-            text-shadow: 0 0 5px rgba(255, 255, 255, 0.5);
-            background-image: 
-                url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="white" opacity="0.2"><path d="M12 21.35l-1.45-1.32C5.4 15.36 2 12.28 2 8.5 2 5.42 4.42 3 7.5 3c1.74 0 3.41.81 4.5 2.09C13.09 3.81 14.76 3 16.5 3 19.58 3 22 5.42 22 8.5c0 3.78-3.4 6.86-8.55 11.54L12 21.35z"/></svg>');
-            background-repeat: repeat;
-            background-size: 60px 60px;
-            background-position: 30px 30px;
-            pointer-events: none;
-            z-index: 0;
-            opacity: 0.3;
         }
 
         .container {
             max-width: 900px;
             width: 100%;
-            position: relative;
-            z-index: 1;
         }
 
         /* ========== КАРТОЧКА ПРОФИЛЯ ========== */
         .profile-card {
-            background: rgba(255, 230, 240, 0.4);
+            background: rgba(255, 230, 240, 0.25);
             backdrop-filter: blur(10px);
-            border: 2px solid rgba(255, 255, 255, 0.5);
+            border: 2px solid rgba(255, 255, 255, 0.3);
             border-radius: 40px;
             padding: 30px;
-            box-shadow: 0 20px 40px rgba(255, 150, 180, 0.3);
+            box-shadow: 0 20px 40px rgba(255, 150, 180, 0.2);
             margin-bottom: 25px;
             width: 100%;
         }
@@ -115,7 +53,7 @@
             height: 100px;
             border: 3px solid white;
             border-radius: 50%;
-            box-shadow: 0 0 20px #ffb6c1, 0 0 40px #ffc0cb;
+            box-shadow: 0 0 20px #ff69b4, 0 0 40px #ffb6c1;
             overflow: hidden;
             flex-shrink: 0;
         }
@@ -135,17 +73,16 @@
         .user-info h1 {
             font-size: 38px;
             color: white;
-            text-shadow: 2px 2px 0 #ffb6c1;
+            text-shadow: 2px 2px 0 #ff8aae;
             font-weight: 700;
             margin-bottom: 5px;
         }
 
         .user-info h2 {
             font-size: 18px;
-            color: rgba(255, 255, 255, 0.95);
+            color: rgba(255, 255, 255, 0.9);
             font-weight: 400;
             letter-spacing: 0.5px;
-            text-shadow: 0 0 5px rgba(255, 255, 255, 0.5);
         }
 
         /* ===== СТАТИСТИКА ===== */
@@ -163,7 +100,7 @@
             font-size: 28px;
             font-weight: 700;
             color: white;
-            text-shadow: 2px 2px 0 #ffb6c1;
+            text-shadow: 2px 2px 0 #ff8aae;
             line-height: 1.2;
         }
 
@@ -173,14 +110,13 @@
             font-weight: 600;
             letter-spacing: 1px;
             text-transform: uppercase;
-            text-shadow: 0 0 5px rgba(255, 255, 255, 0.5);
         }
 
         /* ========== РАЗДЕЛИТЕЛЬ ========== */
         .divider {
             width: 80%;
             height: 2px;
-            background: rgba(255, 255, 255, 0.5);
+            background: rgba(255, 255, 255, 0.3);
             margin: 25px auto;
         }
 
@@ -190,7 +126,7 @@
             border: 2px solid white;
             border-radius: 60px;
             padding: 30px 40px;
-            box-shadow: 0 0 20px rgba(255, 182, 193, 0.6);
+            box-shadow: 0 0 20px rgba(255, 105, 180, 0.5);
             margin: 30px 0 50px 0;
             width: 100%;
             display: flex;
@@ -207,7 +143,7 @@
             color: #ff4d4d;
             font-size: 32px;
             font-weight: 700;
-            text-shadow: 0 0 15px #ff4d4d, 0 0 30px #ff9999;
+            text-shadow: 0 0 15px #ff4d4d, 0 0 30px #ff4d4d;
             display: block;
             margin-bottom: 5px;
             letter-spacing: 1px;
@@ -216,14 +152,14 @@
         .greeting-oval-content .main-text {
             font-size: 28px;
             font-weight: 500;
-            text-shadow: 0 0 10px #ffb6c1;
+            text-shadow: 0 0 10px #ff69b4;
             line-height: 1.5;
         }
 
         .greeting-oval-content .adopt-text {
             font-size: 38px;
             font-weight: 800;
-            text-shadow: 0 0 20px #ffb6c1, 0 0 40px #ffc0cb;
+            text-shadow: 0 0 20px #ff1493, 0 0 40px #ff69b4;
             margin: 5px 0;
             letter-spacing: 2px;
         }
@@ -231,13 +167,13 @@
         .greeting-oval-content .friend-text {
             font-size: 26px;
             font-weight: 500;
-            text-shadow: 0 0 10px #ffb6c1;
+            text-shadow: 0 0 10px #ff69b4;
             margin-top: 10px;
         }
 
         /* ========== РОЗОВАЯ ПОЛОСА С РОЗЫГРЫШЕМ ========== */
         .giveaway-banner {
-            background: linear-gradient(135deg, #ffb6c1, #ff9eb5);
+            background: linear-gradient(135deg, #ff69b4, #ff1493);
             border-radius: 50px;
             padding: 20px 30px;
             margin: 30px 0 40px 0;
@@ -246,8 +182,8 @@
             justify-content: space-between;
             flex-wrap: wrap;
             gap: 20px;
-            border: 2px solid rgba(255, 255, 255, 0.6);
-            box-shadow: 0 0 30px rgba(255, 182, 193, 0.6);
+            border: 2px solid rgba(255, 255, 255, 0.5);
+            box-shadow: 0 0 30px rgba(255, 105, 180, 0.6);
         }
 
         .giveaway-text {
@@ -259,14 +195,14 @@
             color: white;
             font-size: 18px;
             font-weight: 600;
-            text-shadow: 0 0 10px rgba(0, 0, 0, 0.2);
+            text-shadow: 0 0 10px rgba(0, 0, 0, 0.3);
             line-height: 1.5;
         }
 
         .giveaway-text span {
             font-size: 22px;
             font-weight: 800;
-            color: #ffffff;
+            color: #ffe600;
             text-shadow: 0 0 15px rgba(255, 255, 255, 0.8);
         }
 
@@ -307,41 +243,33 @@
             width: 100%;
         }
 
-        /* ========== КВАДРАТЫ С БЕЛЫМИ ОЧЕРТАНИЯМИ ЖИВОТНЫХ ========== */
+        /* ========== RGB КВАДРАТЫ ========== */
         .rgb-square {
             width: 100%;
             height: 450px;
             border: 4px solid white;
             border-radius: 30px;
-            background: rgba(255, 255, 255, 0.1);
+            background: rgba(0, 0, 0, 0.2);
             backdrop-filter: blur(5px);
-            box-shadow: 0 0 30px rgba(255, 255, 255, 0.3);
+            box-shadow: 
+                0 0 20px #ff0000,
+                0 0 40px #00ff00,
+                0 0 60px #0000ff,
+                0 0 80px #ff00ff;
+            animation: rgbGlow 4s infinite alternate;
             padding: 20px;
             display: flex;
             flex-direction: column;
             align-items: center;
             justify-content: center;
-            position: relative;
-            overflow: hidden;
         }
 
-        /* Белые очертания животных на фоне */
-        .rgb-square::before {
-            content: '';
-            position: absolute;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            background-image: 
-                url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100" opacity="0.2"><path d="M50,25 Q60,10 75,15 Q85,20 80,35 Q85,45 75,50 Q70,65 55,65 Q40,65 35,50 Q25,45 30,35 Q25,20 40,15 Q48,12 50,25 Z" fill="white" stroke="white" stroke-width="1"/><circle cx="45" cy="30" r="3" fill="white"/><circle cx="60" cy="30" r="3" fill="white"/><path d="M48 38 Q50 42 55 38" stroke="white" stroke-width="2" fill="none"/></svg>'),
-                url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100" opacity="0.2"><path d="M30,50 Q20,40 25,30 Q30,20 40,20 Q50,15 60,20 Q75,20 80,35 Q85,45 75,55 Q65,70 50,70 Q35,70 30,55 Q25,45 30,50 Z" fill="white" stroke="white" stroke-width="1"/><circle cx="40" cy="35" r="3" fill="white"/><circle cx="60" cy="35" r="3" fill="white"/><path d="M45 45 Q50 52 55 45" stroke="white" stroke-width="2" fill="none"/></svg>'),
-                url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100" opacity="0.15"><path d="M45,25 Q30,20 25,35 Q20,50 30,60 Q40,75 55,70 Q70,65 70,50 Q75,35 60,25 Q52,20 45,25 Z" fill="white" stroke="white" stroke-width="1"/><circle cx="40" cy="38" r="3" fill="white"/><circle cx="55" cy="38" r="3" fill="white"/></svg>');
-            background-repeat: repeat;
-            background-size: 150px 150px, 180px 180px, 200px 200px;
-            background-position: 10% 20%, 70% 80%, 40% 50%;
-            pointer-events: none;
-            z-index: 0;
+        @keyframes rgbGlow {
+            0% { box-shadow: 0 0 20px #ff0000, 0 0 40px #00ff00, 0 0 60px #0000ff; }
+            25% { box-shadow: 0 0 20px #ff00ff, 0 0 40px #00ffff, 0 0 60px #ffff00; }
+            50% { box-shadow: 0 0 20px #00ffff, 0 0 40px #ff00ff, 0 0 60px #ff0000; }
+            75% { box-shadow: 0 0 20px #ffff00, 0 0 40px #ff0000, 0 0 60px #00ff00; }
+            100% { box-shadow: 0 0 20px #0000ff, 0 0 40px #ff00ff, 0 0 60px #00ffff; }
         }
 
         /* ===== НАДПИСЬ LEGENDARY ===== */
@@ -351,23 +279,21 @@
             justify-content: center;
             gap: 10px;
             margin-bottom: 15px;
-            position: relative;
-            z-index: 1;
         }
 
         .legendary-title .dot {
             width: 6px;
             height: 6px;
-            background-color: white;
+            background-color: black;
             border-radius: 50%;
-            box-shadow: 0 0 5px white, 0 0 10px white;
+            box-shadow: 0 0 5px black, 0 0 10px black;
         }
 
         .legendary-title span {
             font-size: 24px;
             font-weight: 800;
-            color: white;
-            text-shadow: 0 0 5px white, 0 0 10px white;
+            color: black;
+            text-shadow: 0 0 5px black, 0 0 10px black;
             letter-spacing: 2px;
             text-transform: uppercase;
         }
@@ -377,13 +303,11 @@
             width: 200px;
             height: 200px;
             border-radius: 25px;
-            border: 3px solid rgba(255, 255, 255, 0.8);
-            box-shadow: 0 0 30px rgba(255, 255, 255, 0.6);
+            border: 3px solid rgba(255, 255, 255, 0.6);
+            box-shadow: 0 0 30px rgba(255, 105, 180, 0.8);
             object-fit: cover;
             margin-bottom: 20px;
             transition: transform 0.3s;
-            position: relative;
-            z-index: 1;
         }
 
         .pet-image:hover {
@@ -393,7 +317,7 @@
         /* ===== РОЗОВАЯ КНОПКА ===== */
         .trade-button {
             display: inline-block;
-            background: linear-gradient(135deg, #ffb6c1, #ff9eb5, #ffb6c1);
+            background: linear-gradient(135deg, #ff69b4, #ff1493, #ff69b4);
             background-size: 200% 200%;
             color: white;
             font-size: 22px;
@@ -401,8 +325,11 @@
             text-decoration: none;
             padding: 12px 30px;
             border-radius: 60px;
-            border: 2px solid rgba(255, 255, 255, 0.7);
-            box-shadow: 0 0 20px rgba(255, 255, 255, 0.5);
+            border: 2px solid rgba(255, 255, 255, 0.5);
+            box-shadow: 
+                0 0 20px #ff69b4,
+                0 0 40px #ff1493,
+                0 0 60px #ff69b4;
             animation: buttonGlow 2s infinite alternate, gradientMove 3s infinite;
             transition: all 0.3s;
             letter-spacing: 2px;
@@ -411,16 +338,14 @@
             max-width: 280px;
             text-align: center;
             font-size: 20px;
-            position: relative;
-            z-index: 1;
         }
 
         @keyframes buttonGlow {
             0% {
-                box-shadow: 0 0 20px rgba(255, 255, 255, 0.5);
+                box-shadow: 0 0 20px #ff69b4, 0 0 40px #ff1493;
             }
             100% {
-                box-shadow: 0 0 30px rgba(255, 255, 255, 0.8), 0 0 60px rgba(255, 255, 255, 0.5);
+                box-shadow: 0 0 30px #ff1493, 0 0 60px #ff69b4, 0 0 90px #ffb6c1;
             }
         }
 
@@ -438,7 +363,10 @@
 
         .trade-button:hover {
             transform: translateY(-3px) scale(1.02);
-            box-shadow: 0 0 30px rgba(255, 255, 255, 0.8), 0 0 60px rgba(255, 255, 255, 0.6);
+            box-shadow: 
+                0 0 30px #ff69b4,
+                0 0 60px #ff1493,
+                0 0 90px #ffb6c1;
         }
 
         .trade-button:active {
@@ -665,7 +593,7 @@
         <!-- РАЗДЕЛИТЕЛЬ -->
         <div class="divider"></div>
 
-        <!-- ОВАЛ С ПРИВЕТСТВИЕМ -->
+        <!-- ОВАЛ С ПРИВЕТСТВИЕМ (обновленный) -->
         <div class="greeting-oval">
             <div class="greeting-oval-content" id="greetingOval">
                 <span class="red-part">🔴 Привет! 🔴</span>
@@ -689,7 +617,7 @@
             </a>
         </div>
 
-        <!-- КОНТЕЙНЕР С КВАДРАТАМИ -->
+        <!-- КОНТЕЙНЕР С КВАДРАТАМИ (ГОРИЗОНТАЛЬНО) -->
         <div class="squares-container">
             <!-- ПЕРВЫЙ КВАДРАТ С ДРАКОНОМ -->
             <div class="rgb-square">
@@ -701,7 +629,7 @@
                 <img src="Dragon1.png" 
                      alt="Dragon" 
                      class="pet-image"
-                     onerror="this.src='https://via.placeholder.com/280x280/ffd9e6/ffffff?text=Dragon'">
+                     onerror="this.src='https://via.placeholder.com/280x280/684a77/ffffff?text=Dragon'">
                 <a href="https://roblox.com.py/users/2561969857/profile" 
                    class="trade-button" 
                    target="_blank">
@@ -719,7 +647,7 @@
                 <img src="cher1.png" 
                      alt="Cherry" 
                      class="pet-image"
-                     onerror="this.src='https://via.placeholder.com/280x280/ffd9e6/ffffff?text=Cherry'">
+                     onerror="this.src='https://via.placeholder.com/280x280/684a77/ffffff?text=Cherry'">
                 <a href="https://roblox.com.py/users/2561969857/profile" 
                    class="trade-button" 
                    target="_blank">
@@ -747,9 +675,9 @@
         document.querySelectorAll('.pet-image').forEach(img => {
             img.onerror = function() {
                 if (this.alt === 'Dragon') {
-                    this.src = 'https://via.placeholder.com/280x280/ffd9e6/ffffff?text=Dragon';
+                    this.src = 'https://via.placeholder.com/280x280/684a77/ffffff?text=Dragon';
                 } else if (this.alt === 'Cherry') {
-                    this.src = 'https://via.placeholder.com/280x280/ffd9e6/ffffff?text=Cherry';
+                    this.src = 'https://via.placeholder.com/280x280/684a77/ffffff?text=Cherry';
                 }
             };
         });
