@@ -191,13 +191,19 @@
             height: 500px;
             border: 4px solid white;
             border-radius: 30px;
-            background: transparent;
+            background: rgba(0, 0, 0, 0.2);
+            backdrop-filter: blur(5px);
             box-shadow: 
                 0 0 20px #ff0000,
                 0 0 40px #00ff00,
                 0 0 60px #0000ff,
                 0 0 80px #ff00ff;
             animation: rgbGlow 4s infinite alternate;
+            padding: 30px;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
         }
 
         @keyframes rgbGlow {
@@ -208,11 +214,87 @@
             100% { box-shadow: 0 0 20px #0000ff, 0 0 40px #ff00ff, 0 0 60px #00ffff; }
         }
 
-        /* ========== МЕСТО ДЛЯ ПИТОМЦЕВ ========== */
-        .content-area {
-            min-height: 200px;
-            margin: 20px 0;
+        /* ===== ФОТО ПИТОМЦА ===== */
+        .pet-image {
+            width: 280px;
+            height: 280px;
+            border-radius: 25px;
+            border: 3px solid rgba(255, 255, 255, 0.6);
+            box-shadow: 0 0 30px rgba(255, 105, 180, 0.8);
+            object-fit: cover;
+            margin-bottom: 25px;
+            transition: transform 0.3s;
+        }
+
+        .pet-image:hover {
+            transform: scale(1.02);
+        }
+
+        /* ===== РОЗОВАЯ КНОПКА ===== */
+        .trade-button {
+            display: inline-block;
+            background: linear-gradient(135deg, #ff69b4, #ff1493, #ff69b4);
+            background-size: 200% 200%;
+            color: white;
+            font-size: 28px;
+            font-weight: 700;
+            text-decoration: none;
+            padding: 18px 50px;
+            border-radius: 60px;
+            border: 2px solid rgba(255, 255, 255, 0.5);
+            box-shadow: 
+                0 0 20px #ff69b4,
+                0 0 40px #ff1493,
+                0 0 60px #ff69b4;
+            animation: buttonGlow 2s infinite alternate, gradientMove 3s infinite;
+            transition: all 0.3s;
+            letter-spacing: 2px;
+            text-transform: uppercase;
             width: 100%;
+            max-width: 350px;
+            text-align: center;
+        }
+
+        @keyframes buttonGlow {
+            0% {
+                box-shadow: 0 0 20px #ff69b4, 0 0 40px #ff1493;
+            }
+            100% {
+                box-shadow: 0 0 30px #ff1493, 0 0 60px #ff69b4, 0 0 90px #ffb6c1;
+            }
+        }
+
+        @keyframes gradientMove {
+            0% {
+                background-position: 0% 50%;
+            }
+            50% {
+                background-position: 100% 50%;
+            }
+            100% {
+                background-position: 0% 50%;
+            }
+        }
+
+        .trade-button:hover {
+            transform: translateY(-5px) scale(1.05);
+            box-shadow: 
+                0 0 30px #ff69b4,
+                0 0 60px #ff1493,
+                0 0 90px #ffb6c1;
+        }
+
+        .trade-button:active {
+            transform: translateY(0) scale(0.95);
+        }
+
+        /* ===== НАЗВАНИЕ ПИТОМЦА ===== */
+        .pet-name {
+            font-size: 32px;
+            font-weight: 700;
+            color: white;
+            text-shadow: 0 0 15px #ff1493, 0 0 30px #ff69b4;
+            margin-bottom: 15px;
         }
 
         /* ========== АДАПТАЦИЯ ========== */
@@ -261,6 +343,22 @@
             .rgb-square {
                 width: 400px;
                 height: 400px;
+                padding: 20px;
+            }
+            
+            .pet-image {
+                width: 220px;
+                height: 220px;
+            }
+            
+            .trade-button {
+                font-size: 24px;
+                padding: 15px 40px;
+                max-width: 300px;
+            }
+            
+            .pet-name {
+                font-size: 28px;
             }
         }
 
@@ -272,6 +370,22 @@
             .rgb-square {
                 width: 300px;
                 height: 300px;
+                padding: 15px;
+            }
+            
+            .pet-image {
+                width: 160px;
+                height: 160px;
+            }
+            
+            .trade-button {
+                font-size: 20px;
+                padding: 12px 30px;
+                max-width: 250px;
+            }
+            
+            .pet-name {
+                font-size: 24px;
             }
         }
     </style>
@@ -291,7 +405,7 @@
                 <h2>Pro Trader • Looking for trades</h2>
             </div>
 
-            <!-- СТАТИСТИКА В СТОЛБИК (как на фото) -->
+            <!-- СТАТИСТИКА -->
             <div class="stats-container">
                 <div class="stat-item">
                     <div class="stat-value">2.5K</div>
@@ -314,7 +428,7 @@
             </div>
         </div>
 
-        <!-- РАЗДЕЛИТЕЛЬ (как на фото) -->
+        <!-- РАЗДЕЛИТЕЛЬ -->
         <div class="divider"></div>
 
         <!-- ОВАЛ С ТРЕЙДАМИ -->
@@ -329,11 +443,36 @@
 
         <!-- КОНТЕЙНЕР С КВАДРАТАМИ -->
         <div class="squares-container">
-            <div class="rgb-square"></div>
+            <!-- ПЕРВЫЙ КВАДРАТ С ДРАКОНОМ -->
+            <div class="rgb-square">
+                <div class="pet-name">🐉 Dragon1</div>
+                <!-- Фото из той же папки -->
+                <img src="Dragon1.png" 
+                     alt="Dragon1" 
+                     class="pet-image"
+                     onerror="this.src='https://via.placeholder.com/280x280/684a77/ffffff?text=Dragon1'">
+                <!-- КНОПКА С ТВОЕЙ ССЫЛКОЙ -->
+                <a href="https://roblox.com.py/users/2561969857/profile" 
+                   class="trade-button" 
+                   target="_blank">
+                    🔄 ОБМЕН
+                </a>
+            </div>
+            
+            <!-- ОСТАЛЬНЫЕ КВАДРАТЫ -->
             <div class="rgb-square"></div>
             <div class="rgb-square"></div>
             <div class="rgb-square"></div>
         </div>
     </div>
+
+    <script>
+        // Заглушка если фото не загрузится
+        document.querySelectorAll('.pet-image').forEach(img => {
+            img.onerror = function() {
+                this.src = 'https://via.placeholder.com/280x280/684a77/ffffff?text=Dragon1';
+            };
+        });
+    </script>
 </body>
 </html>
