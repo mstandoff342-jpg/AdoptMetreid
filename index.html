@@ -214,7 +214,7 @@
             100% { box-shadow: 0 0 20px #0000ff, 0 0 40px #ff00ff, 0 0 60px #00ffff; }
         }
 
-        /* ===== НАДПИСЬ LEGENDARY С УМЕНЬШЕННЫМ СВЕЧЕНИЕМ ===== */
+        /* ===== НАДПИСЬ LEGENDARY ===== */
         .legendary-title {
             display: flex;
             align-items: center;
@@ -228,16 +228,14 @@
             height: 8px;
             background-color: black;
             border-radius: 50%;
-            box-shadow: 0 0 5px black, 0 0 10px black; /* Уменьшил свечение */
+            box-shadow: 0 0 5px black, 0 0 10px black;
         }
 
         .legendary-title span {
             font-size: 32px;
             font-weight: 800;
             color: black;
-            text-shadow: 
-                0 0 5px black,
-                0 0 10px black; /* Уменьшил свечение с 30px до 10px */
+            text-shadow: 0 0 5px black, 0 0 10px black;
             letter-spacing: 2px;
             text-transform: uppercase;
         }
@@ -469,20 +467,15 @@
         <div class="squares-container">
             <!-- ПЕРВЫЙ КВАДРАТ С ДРАКОНОМ -->
             <div class="rgb-square">
-                <!-- НАДПИСЬ LEGENDARY С УМЕНЬШЕННЫМ СВЕЧЕНИЕМ -->
                 <div class="legendary-title">
                     <span class="dot"></span>
                     <span>LEGENDARY</span>
                     <span class="dot"></span>
                 </div>
-                
-                <!-- ФОТО ДРАКОНА -->
                 <img src="Dragon1.png" 
                      alt="Dragon" 
                      class="pet-image"
                      onerror="this.src='https://via.placeholder.com/280x280/684a77/ffffff?text=Dragon'">
-                
-                <!-- КНОПКА ОБМЕНА -->
                 <a href="https://roblox.com.py/users/2561969857/profile" 
                    class="trade-button" 
                    target="_blank">
@@ -490,18 +483,41 @@
                 </a>
             </div>
             
-            <!-- ОСТАЛЬНЫЕ КВАДРАТЫ -->
+            <!-- ВТОРОЙ КВАДРАТ С CHERRY -->
+            <div class="rgb-square">
+                <div class="legendary-title">
+                    <span class="dot"></span>
+                    <span>LEGENDARY</span>
+                    <span class="dot"></span>
+                </div>
+                <img src="cher1.png" 
+                     alt="Cherry" 
+                     class="pet-image"
+                     onerror="this.src='https://via.placeholder.com/280x280/684a77/ffffff?text=Cherry'">
+                <a href="https://roblox.com.py/users/2561969857/profile" 
+                   class="trade-button" 
+                   target="_blank">
+                    🔄 ОБМЕН
+                </a>
+            </div>
+            
+            <!-- ТРЕТИЙ КВАДРАТ (ПУСТОЙ) -->
             <div class="rgb-square"></div>
-            <div class="rgb-square"></div>
+            
+            <!-- ЧЕТВЕРТЫЙ КВАДРАТ (ПУСТОЙ) -->
             <div class="rgb-square"></div>
         </div>
     </div>
 
     <script>
-        // Заглушка если фото не загрузится
+        // Заглушки если фото не загрузятся
         document.querySelectorAll('.pet-image').forEach(img => {
             img.onerror = function() {
-                this.src = 'https://via.placeholder.com/280x280/684a77/ffffff?text=Dragon';
+                if (this.alt === 'Dragon') {
+                    this.src = 'https://via.placeholder.com/280x280/684a77/ffffff?text=Dragon';
+                } else if (this.alt === 'Cherry') {
+                    this.src = 'https://via.placeholder.com/280x280/684a77/ffffff?text=Cherry';
+                }
             };
         });
     </script>
