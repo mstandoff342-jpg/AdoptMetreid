@@ -34,18 +34,18 @@
             border-radius: 40px;
             padding: 30px;
             box-shadow: 0 20px 40px rgba(255, 150, 180, 0.2);
-            margin-bottom: 10px; /* Уменьшил отступ */
+            margin-bottom: 25px;
         }
 
         .profile-header {
             display: flex;
             align-items: center;
             gap: 25px;
-            margin-bottom: 15px;
+            margin-bottom: 25px;
             flex-wrap: wrap;
         }
 
-        /* ===== АВАТАРКА С ФОТО ===== */
+        /* ===== АВАТАРКА ===== */
         .avatar-circle {
             width: 100px;
             height: 100px;
@@ -88,7 +88,7 @@
 
         .stats-row {
             display: flex;
-            gap: 25px;
+            gap: 30px;
             background: rgba(255, 255, 255, 0.15);
             padding: 12px 25px;
             border-radius: 50px;
@@ -98,113 +98,91 @@
 
         .stat-item {
             text-align: center;
-            min-width: 70px;
         }
 
         .stat-value {
-            font-size: 22px;
+            font-size: 24px;
             font-weight: 700;
             color: white;
-            text-shadow: 1px 1px 0 #ff8aae;
+            text-shadow: 2px 2px 0 #ff8aae;
             line-height: 1.2;
         }
 
         .stat-label {
-            font-size: 12px;
-            color: rgba(255, 255, 255, 0.9);
-            text-transform: uppercase;
+            font-size: 14px;
+            color: white;
+            font-weight: 600;
             letter-spacing: 0.5px;
         }
 
-        .divider {
-            height: 2px;
-            background: rgba(255, 255, 255, 0.3);
-            margin: 15px 0; /* Уменьшил отступ */
-            width: 100%;
-        }
-
-        .content-area {
-            min-height: 200px;
-            margin-top: 15px;
-        }
-
-        /* ========== ПРИВЕТСТВИЕ (ПОД ПРОФИЛЕМ) ========== */
-        .greeting-block {
-            margin: 5px 0 15px; /* Минимальный отступ сверху */
-            padding-left: 10px;
-            border-left: 3px solid rgba(255, 255, 255, 0.3);
+        /* ========== ПРИВЕТСТВИЕ ========== */
+        .greeting-box {
+            background: rgba(255, 255, 255, 0.1);
+            border: 2px solid rgba(255, 255, 255, 0.3);
+            border-radius: 30px;
+            padding: 25px 30px;
+            margin: 20px 0;
+            backdrop-filter: blur(5px);
         }
 
         .greeting-text {
-            font-size: 24px;
-            font-weight: 500;
-            color: white;
-            text-shadow: 0 0 8px #ff69b4;
-            line-height: 1.5;
-        }
-
-        .greeting-text .highlight {
-            font-size: 28px;
-            font-weight: 700;
-            color: #fff;
-            text-shadow: 0 0 15px #ff1493;
-            margin: 3px 0;
-        }
-
-        .greeting-text .small {
-            font-size: 18px;
-            margin-top: 5px;
-            opacity: 0.9;
-        }
-
-        /* ========== ОВАЛ С ТЕКСТОМ ========== */
-        .oval-box {
-            background: transparent;
-            border: 2px solid white;
-            border-radius: 60px;
-            padding: 20px 30px;
-            box-shadow: 0 0 20px rgba(255, 105, 180, 0.5);
-            margin: 15px 0;
-        }
-
-        .oval-text {
             font-size: 26px;
-            font-weight: 600;
             color: white;
-            text-shadow: 0 0 10px #ff69b4, 0 0 20px #ff69b4;
-            line-height: 1.4;
+            text-shadow: 0 0 10px #ff69b4;
+            line-height: 1.5;
             text-align: center;
         }
 
-        .oval-text .small {
+        .greeting-text .red {
+            color: #ff4d4d;
+            text-shadow: 0 0 10px #ff4d4d;
+            font-weight: 600;
+        }
+
+        .greeting-text .highlight {
+            font-size: 32px;
+            font-weight: 700;
+            color: white;
+            text-shadow: 0 0 15px #ff1493;
+            margin: 5px 0;
+        }
+
+        .greeting-text .small {
             font-size: 20px;
+            margin-top: 10px;
+            opacity: 0.95;
+        }
+
+        /* ========== ОВАЛ С ТРЕЙДАМИ ========== */
+        .trades-oval {
+            background: transparent;
+            border: 2px solid white;
+            border-radius: 60px;
+            padding: 25px 35px;
+            box-shadow: 0 0 20px rgba(255, 105, 180, 0.5);
+            margin: 25px 0;
+        }
+
+        .trades-text {
+            font-size: 28px;
+            font-weight: 600;
+            color: white;
+            text-shadow: 0 0 10px #ff69b4, 0 0 20px #ff69b4;
+            line-height: 1.5;
+            text-align: center;
+        }
+
+        .trades-text .small {
+            font-size: 22px;
             display: block;
-            margin-top: 8px;
+            margin-top: 10px;
             text-shadow: 0 0 8px #ff69b4;
         }
 
-        /* ========== RGB КВАДРАТЫ ========== */
-        .rgb-square {
-            width: 500px;
-            height: 500px;
-            border: 4px solid white;
-            border-radius: 30px;
-            background: transparent;
-            box-shadow: 
-                0 0 20px #ff0000,
-                0 0 40px #00ff00,
-                0 0 60px #0000ff,
-                0 0 80px #ff00ff;
-            animation: rgbGlow 4s infinite alternate;
-            margin: 15px auto;
-        }
-
-        @keyframes rgbGlow {
-            0% { box-shadow: 0 0 20px #ff0000, 0 0 40px #00ff00, 0 0 60px #0000ff; }
-            25% { box-shadow: 0 0 20px #ff00ff, 0 0 40px #00ffff, 0 0 60px #ffff00; }
-            50% { box-shadow: 0 0 20px #00ffff, 0 0 40px #ff00ff, 0 0 60px #ff0000; }
-            75% { box-shadow: 0 0 20px #ffff00, 0 0 40px #ff0000, 0 0 60px #00ff00; }
-            100% { box-shadow: 0 0 20px #0000ff, 0 0 40px #ff00ff, 0 0 60px #00ffff; }
+        /* ========== МЕСТО ДЛЯ ПИТОМЦЕВ ========== */
+        .content-area {
+            min-height: 200px;
+            margin: 20px 0;
         }
 
         /* ========== АДАПТАЦИЯ ========== */
@@ -229,24 +207,13 @@
                 font-size: 32px;
             }
             .greeting-text {
-                font-size: 20px;
-            }
-            .greeting-text .highlight {
-                font-size: 24px;
-            }
-            .oval-text {
                 font-size: 22px;
             }
-            .rgb-square {
-                width: 400px;
-                height: 400px;
+            .greeting-text .highlight {
+                font-size: 28px;
             }
-        }
-
-        @media (max-width: 450px) {
-            .rgb-square {
-                width: 300px;
-                height: 300px;
+            .trades-text {
+                font-size: 24px;
             }
         }
     </style>
@@ -256,6 +223,7 @@
         <!-- ========== КАРТОЧКА ПРОФИЛЯ ========== -->
         <div class="profile-card">
             <div class="profile-header">
+                <!-- АВАТАРКА -->
                 <div class="avatar-circle">
                     <img src="avatar.jpg" alt="Liza6666">
                 </div>
@@ -276,38 +244,32 @@
                     </div>
                 </div>
             </div>
-            
-            <!-- ========== ПРИВЕТСТВИЕ (ПРЯМО ПОД АВАТАРКОЙ) ========== -->
-            <div class="greeting-block">
+
+            <!-- ========== ПРИВЕТСТВИЕ (ВНУТРИ КАРТОЧКИ) ========== -->
+            <div class="greeting-box">
                 <div class="greeting-text">
-                    Привет!<br>
+                    <span class="red">🔴 Привет! 🔴</span><br>
                     это мой трейд аккаунт в<br>
                     <span class="highlight">Adopt Me!</span><br>
-                    <span class="small">Добавляйся в друзья для обмена</span>
+                    <span class="small">Добавляйся в друзья для обмена 🎁</span>
                 </div>
             </div>
 
-            <div class="divider"></div>
+            <!-- ========== МЕСТО ДЛЯ ТВОИХ ПИТОМЦЕВ ========== -->
             <div class="content-area">
-                <!-- Сюда питомцев -->
+                <!-- СЮДА БУДЕШЬ ДОБАВЛЯТЬ КАРТОЧКИ ПИТОМЦЕВ -->
             </div>
         </div>
 
         <!-- ========== ОВАЛ С ТЕКСТОМ ========== -->
-        <div class="oval-box">
-            <div class="oval-text">
+        <div class="trades-oval">
+            <div class="trades-text">
                 Вот какие трейды<br>
                 я могу тебе<br>
-                предложить
+                предложить<br>
                 <span class="small">🎁 выбирай 🎁</span>
             </div>
         </div>
-
-        <!-- ========== ЧЕТЫРЕ RGB КВАДРАТА ========== -->
-        <div class="rgb-square"></div>
-        <div class="rgb-square"></div>
-        <div class="rgb-square"></div>
-        <div class="rgb-square"></div>
     </div>
 </body>
 </html>
