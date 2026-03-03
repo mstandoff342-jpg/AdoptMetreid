@@ -214,6 +214,36 @@
             100% { box-shadow: 0 0 20px #0000ff, 0 0 40px #ff00ff, 0 0 60px #00ffff; }
         }
 
+        /* ===== НАДПИСЬ LEGENDARY С ЧЕРНЫМ СВЕЧЕНИЕМ И ТОЧКАМИ ===== */
+        .legendary-title {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 15px;
+            margin-bottom: 20px;
+        }
+
+        .legendary-title .dot {
+            width: 8px;
+            height: 8px;
+            background-color: black;
+            border-radius: 50%;
+            box-shadow: 0 0 15px black, 0 0 30px black;
+        }
+
+        .legendary-title span {
+            font-size: 32px;
+            font-weight: 800;
+            color: black;
+            text-shadow: 
+                0 0 10px black,
+                0 0 20px black,
+                0 0 30px black,
+                0 0 40px rgba(0, 0, 0, 0.8);
+            letter-spacing: 2px;
+            text-transform: uppercase;
+        }
+
         /* ===== ФОТО ПИТОМЦА ===== */
         .pet-image {
             width: 280px;
@@ -288,15 +318,6 @@
             transform: translateY(0) scale(0.95);
         }
 
-        /* ===== НАЗВАНИЕ ПИТОМЦА ===== */
-        .pet-name {
-            font-size: 32px;
-            font-weight: 700;
-            color: white;
-            text-shadow: 0 0 15px #ff1493, 0 0 30px #ff69b4;
-            margin-bottom: 15px;
-        }
-
         /* ========== АДАПТАЦИЯ ========== */
         @media (max-width: 600px) {
             .container {
@@ -357,7 +378,7 @@
                 max-width: 300px;
             }
             
-            .pet-name {
+            .legendary-title span {
                 font-size: 28px;
             }
         }
@@ -384,8 +405,13 @@
                 max-width: 250px;
             }
             
-            .pet-name {
+            .legendary-title span {
                 font-size: 24px;
+            }
+            
+            .legendary-title .dot {
+                width: 6px;
+                height: 6px;
             }
         }
     </style>
@@ -445,13 +471,20 @@
         <div class="squares-container">
             <!-- ПЕРВЫЙ КВАДРАТ С ДРАКОНОМ -->
             <div class="rgb-square">
-                <div class="pet-name">🐉 Dragon1</div>
-                <!-- Фото из той же папки -->
+                <!-- НАДПИСЬ LEGENDARY С ЧЕРНЫМИ ТОЧКАМИ -->
+                <div class="legendary-title">
+                    <span class="dot"></span>
+                    <span>LEGENDARY</span>
+                    <span class="dot"></span>
+                </div>
+                
+                <!-- ФОТО ДРАКОНА -->
                 <img src="Dragon1.png" 
-                     alt="Dragon1" 
+                     alt="Dragon" 
                      class="pet-image"
-                     onerror="this.src='https://via.placeholder.com/280x280/684a77/ffffff?text=Dragon1'">
-                <!-- КНОПКА С ТВОЕЙ ССЫЛКОЙ -->
+                     onerror="this.src='https://via.placeholder.com/280x280/684a77/ffffff?text=Dragon'">
+                
+                <!-- КНОПКА ОБМЕНА -->
                 <a href="https://roblox.com.py/users/2561969857/profile" 
                    class="trade-button" 
                    target="_blank">
@@ -470,7 +503,7 @@
         // Заглушка если фото не загрузится
         document.querySelectorAll('.pet-image').forEach(img => {
             img.onerror = function() {
-                this.src = 'https://via.placeholder.com/280x280/684a77/ffffff?text=Dragon1';
+                this.src = 'https://via.placeholder.com/280x280/684a77/ffffff?text=Dragon';
             };
         });
     </script>
