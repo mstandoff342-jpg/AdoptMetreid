@@ -22,7 +22,7 @@
         }
 
         .container {
-            max-width: 800px;
+            max-width: 600px;
             width: 100%;
         }
 
@@ -32,29 +32,22 @@
             backdrop-filter: blur(10px);
             border: 2px solid rgba(255, 255, 255, 0.3);
             border-radius: 40px;
-            padding: 30px;
+            padding: 40px 30px;
             box-shadow: 0 20px 40px rgba(255, 150, 180, 0.2);
             margin-bottom: 25px;
             width: 100%;
-        }
-
-        .profile-header {
-            display: flex;
-            align-items: center;
-            gap: 25px;
-            margin-bottom: 20px;
-            flex-wrap: wrap;
+            text-align: center;
         }
 
         /* ===== АВАТАРКА ===== */
         .avatar-circle {
-            width: 100px;
-            height: 100px;
+            width: 120px;
+            height: 120px;
             border: 3px solid white;
             border-radius: 50%;
             box-shadow: 0 0 20px #ff69b4, 0 0 40px #ffb6c1;
             overflow: hidden;
-            flex-shrink: 0;
+            margin: 0 auto 20px auto;
         }
 
         .avatar-circle img {
@@ -64,79 +57,65 @@
             display: block;
         }
 
-        .info-stats-wrapper {
-            flex: 1;
-            display: flex;
-            align-items: center;
-            justify-content: space-between;
-            flex-wrap: wrap;
-            gap: 15px;
+        /* ===== ИНФОРМАЦИЯ ===== */
+        .user-info {
+            margin-bottom: 25px;
         }
 
         .user-info h1 {
-            font-size: 38px;
+            font-size: 42px;
             color: white;
             text-shadow: 2px 2px 0 #ff8aae;
             font-weight: 700;
             margin-bottom: 5px;
-            white-space: nowrap;
         }
 
         .user-info h2 {
-            font-size: 18px;
+            font-size: 20px;
             color: rgba(255, 255, 255, 0.9);
             font-weight: 400;
             letter-spacing: 0.5px;
-            white-space: nowrap;
         }
 
-        .stats-row {
+        /* ===== СТАТИСТИКА ===== */
+        .stats-container {
             display: flex;
-            gap: 25px;
-            background: rgba(255, 255, 255, 0.15);
-            padding: 12px 25px;
-            border-radius: 50px;
-            border: 1px solid rgba(255, 255, 255, 0.3);
-            backdrop-filter: blur(5px);
-            flex-shrink: 0;
+            justify-content: center;
+            gap: 50px;
+            margin: 30px 0;
         }
 
         .stat-item {
             text-align: center;
-            min-width: 70px;
         }
 
         .stat-value {
-            font-size: 22px;
+            font-size: 32px;
             font-weight: 700;
             color: white;
-            text-shadow: 1px 1px 0 #ff8aae;
+            text-shadow: 2px 2px 0 #ff8aae;
             line-height: 1.2;
         }
 
         .stat-label {
-            font-size: 12px;
-            color: rgba(255, 255, 255, 0.9);
+            font-size: 16px;
+            color: white;
+            font-weight: 600;
+            letter-spacing: 1px;
             text-transform: uppercase;
-            letter-spacing: 0.5px;
         }
 
         /* ========== ПРИВЕТСТВИЕ ========== */
-        .greeting-box {
-            background: rgba(255, 255, 255, 0.1);
-            border: 2px solid rgba(255, 255, 255, 0.3);
-            border-radius: 30px;
-            padding: 20px 25px;
-            margin: 20px 0 0; /* Убрал нижний отступ */
-            backdrop-filter: blur(5px);
-            width: 100%;
+        .greeting-block {
+            margin: 30px 0;
+            padding: 0 10px;
         }
 
         .greeting-text {
             font-size: 24px;
             color: white;
             text-shadow: 0 0 8px #ff69b4;
-            line-height: 1.5;
+            line-height: 1.6;
             text-align: center;
         }
 
@@ -144,53 +123,55 @@
             color: #ff4d4d;
             text-shadow: 0 0 10px #ff4d4d;
             font-weight: 600;
+            font-size: 28px;
         }
 
         .greeting-text .highlight {
-            font-size: 28px;
+            font-size: 32px;
             font-weight: 700;
             color: white;
             text-shadow: 0 0 15px #ff1493;
-            margin: 3px 0;
+            margin: 5px 0;
         }
 
         .greeting-text .small {
-            font-size: 18px;
-            margin-top: 8px;
+            font-size: 20px;
+            margin-top: 10px;
             opacity: 0.95;
         }
 
-        /* ========== МЕСТО ДЛЯ ПИТОМЦЕВ ========== */
-        .content-area {
-            min-height: 200px;
-            margin: 20px 0 0; /* Отступ только сверху */
-            width: 100%;
+        /* ========== РАЗДЕЛИТЕЛЬ ========== */
+        .divider {
+            width: 80%;
+            height: 2px;
+            background: rgba(255, 255, 255, 0.3);
+            margin: 30px auto;
         }
 
         /* ========== ОВАЛ С ТРЕЙДАМИ ========== */
-        .oval-box {
+        .trades-oval {
             background: transparent;
             border: 2px solid white;
             border-radius: 60px;
-            padding: 20px 30px;
+            padding: 25px 30px;
             box-shadow: 0 0 20px rgba(255, 105, 180, 0.5);
-            margin: 25px 0;
+            margin: 30px 0;
             width: 100%;
         }
 
-        .oval-text {
-            font-size: 26px;
+        .trades-text {
+            font-size: 28px;
             font-weight: 600;
             color: white;
             text-shadow: 0 0 10px #ff69b4, 0 0 20px #ff69b4;
-            line-height: 1.4;
+            line-height: 1.5;
             text-align: center;
         }
 
-        .oval-text .small {
-            font-size: 20px;
+        .trades-text .small {
+            font-size: 24px;
             display: block;
-            margin-top: 8px;
+            margin-top: 10px;
             text-shadow: 0 0 8px #ff69b4;
         }
 
@@ -199,8 +180,8 @@
             display: flex;
             flex-direction: column;
             align-items: center;
-            gap: 20px;
-            margin: 20px 0;
+            gap: 25px;
+            margin: 30px 0;
             width: 100%;
         }
 
@@ -227,50 +208,54 @@
             100% { box-shadow: 0 0 20px #0000ff, 0 0 40px #ff00ff, 0 0 60px #00ffff; }
         }
 
+        /* ========== МЕСТО ДЛЯ ПИТОМЦЕВ ========== */
+        .content-area {
+            min-height: 200px;
+            margin: 20px 0;
+            width: 100%;
+        }
+
         /* ========== АДАПТАЦИЯ ========== */
         @media (max-width: 600px) {
-            .profile-header {
-                flex-direction: column;
-                text-align: center;
-                gap: 15px;
-            }
-            
-            .info-stats-wrapper {
-                flex-direction: column;
-                align-items: center;
-                width: 100%;
-            }
-            
-            .user-info h1 {
-                font-size: 32px;
-                white-space: normal;
-            }
-            
-            .user-info h2 {
-                white-space: normal;
-            }
-            
-            .stats-row {
-                width: fit-content;
-                justify-content: center;
-                margin: 0 auto;
+            .container {
+                max-width: 100%;
             }
             
             .avatar-circle {
-                width: 80px;
-                height: 80px;
+                width: 100px;
+                height: 100px;
+            }
+            
+            .user-info h1 {
+                font-size: 36px;
+            }
+            
+            .user-info h2 {
+                font-size: 18px;
+            }
+            
+            .stat-value {
+                font-size: 28px;
+            }
+            
+            .stat-label {
+                font-size: 14px;
             }
             
             .greeting-text {
                 font-size: 20px;
             }
             
-            .greeting-text .highlight {
+            .greeting-text .red {
                 font-size: 24px;
             }
             
-            .oval-text {
-                font-size: 22px;
+            .greeting-text .highlight {
+                font-size: 28px;
+            }
+            
+            .trades-text {
+                font-size: 24px;
             }
             
             .rgb-square {
@@ -280,22 +265,13 @@
         }
 
         @media (max-width: 450px) {
+            .stats-container {
+                gap: 30px;
+            }
+            
             .rgb-square {
                 width: 300px;
                 height: 300px;
-            }
-            
-            .stats-row {
-                gap: 15px;
-                padding: 10px 15px;
-            }
-            
-            .stat-item {
-                min-width: 60px;
-            }
-            
-            .stat-value {
-                font-size: 20px;
             }
         }
     </style>
@@ -304,31 +280,31 @@
     <div class="container">
         <!-- ========== КАРТОЧКА ПРОФИЛЯ ========== -->
         <div class="profile-card">
-            <div class="profile-header">
-                <!-- АВАТАРКА -->
-                <div class="avatar-circle">
-                    <img src="avatar.jpg" alt="Liza6666">
+            <!-- АВАТАРКА -->
+            <div class="avatar-circle">
+                <img src="avatar.jpg" alt="Liza6666">
+            </div>
+
+            <!-- ИМЯ И СТАТУС -->
+            <div class="user-info">
+                <h1>Liza6666</h1>
+                <h2>Pro Trader • Looking for trades</h2>
+            </div>
+
+            <!-- СТАТИСТИКА В СТОЛБИК (как на фото) -->
+            <div class="stats-container">
+                <div class="stat-item">
+                    <div class="stat-value">2.5K</div>
+                    <div class="stat-label">FOLLOW</div>
                 </div>
-                <div class="info-stats-wrapper">
-                    <div class="user-info">
-                        <h1>Liza6666</h1>
-                        <h2>Pro Trader • Looking for trades</h2>
-                    </div>
-                    <div class="stats-row">
-                        <div class="stat-item">
-                            <div class="stat-value">2.5K</div>
-                            <div class="stat-label">FOLLOW</div>
-                        </div>
-                        <div class="stat-item">
-                            <div class="stat-value">168</div>
-                            <div class="stat-label">ОБМЕНОВ</div>
-                        </div>
-                    </div>
+                <div class="stat-item">
+                    <div class="stat-value">168</div>
+                    <div class="stat-label">ОБМЕНОВ</div>
                 </div>
             </div>
 
-            <!-- ========== ПРИВЕТСТВИЕ ========== -->
-            <div class="greeting-box">
+            <!-- ПРИВЕТСТВИЕ -->
+            <div class="greeting-block">
                 <div class="greeting-text">
                     <span class="red">🔴 Привет! 🔴</span><br>
                     это мой трейд аккаунт в<br>
@@ -336,16 +312,14 @@
                     <span class="small">Добавляйся в друзья для обмена 🎁</span>
                 </div>
             </div>
-
-            <!-- ========== МЕСТО ДЛЯ ПИТОМЦЕВ ========== -->
-            <div class="content-area">
-                <!-- СЮДА БУДЕШЬ ДОБАВЛЯТЬ КАРТОЧКИ ПИТОМЦЕВ -->
-            </div>
         </div>
 
-        <!-- ========== ОВАЛ С ТЕКСТОМ ========== -->
-        <div class="oval-box">
-            <div class="oval-text">
+        <!-- РАЗДЕЛИТЕЛЬ (как на фото) -->
+        <div class="divider"></div>
+
+        <!-- ОВАЛ С ТРЕЙДАМИ -->
+        <div class="trades-oval">
+            <div class="trades-text">
                 Вот какие трейды<br>
                 я могу тебе<br>
                 предложить<br>
@@ -353,7 +327,7 @@
             </div>
         </div>
 
-        <!-- ========== КОНТЕЙНЕР С КВАДРАТАМИ ========== -->
+        <!-- КОНТЕЙНЕР С КВАДРАТАМИ -->
         <div class="squares-container">
             <div class="rgb-square"></div>
             <div class="rgb-square"></div>
