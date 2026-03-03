@@ -19,6 +19,7 @@
             display: flex;
             justify-content: center;
             padding: 20px;
+            position: relative;
         }
 
         .container {
@@ -314,6 +315,30 @@
             transform: translateY(0) scale(0.95);
         }
 
+        /* ========== КНОПКА ПЕРЕКЛЮЧЕНИЯ ЯЗЫКА ========== */
+        .lang-switcher {
+            position: fixed;
+            bottom: 30px;
+            right: 30px;
+            z-index: 1000;
+            cursor: pointer;
+            width: 60px;
+            height: 60px;
+            border-radius: 50%;
+            box-shadow: 0 0 20px rgba(255, 255, 255, 0.5);
+            transition: transform 0.3s;
+            background: white;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 32px;
+            border: 2px solid rgba(255, 255, 255, 0.8);
+        }
+
+        .lang-switcher:hover {
+            transform: scale(1.1);
+        }
+
         /* ========== АДАПТАЦИЯ ========== */
         @media (max-width: 600px) {
             .container {
@@ -377,6 +402,14 @@
             .legendary-title span {
                 font-size: 28px;
             }
+            
+            .lang-switcher {
+                width: 50px;
+                height: 50px;
+                font-size: 28px;
+                bottom: 20px;
+                right: 20px;
+            }
         }
 
         @media (max-width: 450px) {
@@ -409,6 +442,12 @@
                 width: 6px;
                 height: 6px;
             }
+            
+            .lang-switcher {
+                width: 45px;
+                height: 45px;
+                font-size: 24px;
+            }
         }
     </style>
 </head>
@@ -431,21 +470,21 @@
             <div class="stats-container">
                 <div class="stat-item">
                     <div class="stat-value">2.5K</div>
-                    <div class="stat-label">FOLLOW</div>
+                    <div class="stat-label" id="stat1">FOLLOW</div>
                 </div>
                 <div class="stat-item">
                     <div class="stat-value">168</div>
-                    <div class="stat-label">ОБМЕНОВ</div>
+                    <div class="stat-label" id="stat2">ОБМЕНОВ</div>
                 </div>
             </div>
 
             <!-- ПРИВЕТСТВИЕ -->
             <div class="greeting-block">
-                <div class="greeting-text">
+                <div class="greeting-text" id="greeting">
                     <span class="red">🔴 Привет! 🔴</span><br>
                     это мой трейд аккаунт в<br>
                     <span class="highlight">Adopt Me!</span><br>
-                    <span class="small">Добавляйся в друзья для обмена 🎁</span>
+                    <span class="small" id="greetingSmall">Добавляйся в друзья для обмена 🎁</span>
                 </div>
             </div>
         </div>
@@ -455,11 +494,11 @@
 
         <!-- ОВАЛ С ТРЕЙДАМИ -->
         <div class="trades-oval">
-            <div class="trades-text">
+            <div class="trades-text" id="tradesText">
                 Вот какие трейды<br>
                 я могу тебе<br>
                 предложить<br>
-                <span class="small">🎁 выбирай 🎁</span>
+                <span class="small" id="tradesSmall">🎁 выбирай 🎁</span>
             </div>
         </div>
 
@@ -509,6 +548,9 @@
         </div>
     </div>
 
+    <!-- КНОПКА ПЕРЕКЛЮЧЕНИЯ ЯЗЫКА -->
+    <div class="lang-switcher" id="langSwitcher">🇷🇺</div>
+
     <script>
         // Заглушки если фото не загрузятся
         document.querySelectorAll('.pet-image').forEach(img => {
@@ -519,6 +561,62 @@
                     this.src = 'https://via.placeholder.com/280x280/684a77/ffffff?text=Cherry';
                 }
             };
+        });
+
+        // ========== ПЕРЕКЛЮЧЕНИЕ ЯЗЫКА ==========
+        let currentLang = 'ru';
+        const langButton = document.getElementById('langSwitcher');
+        
+        // Элементы для перевода
+        const stat1 = document.getElementById('stat1');
+        const stat2 = document.getElementById('stat2');
+        const greeting = document.getElementById('greeting');
+        const greetingSmall = document.getElementById('greetingSmall');
+        const tradesText = document.getElementById('tradesText');
+        const tradesSmall = document.getElementById('tradesSmall');
+        
+        // Тексты на двух языках
+        const texts = {
+            ru: {
+                stat1: 'FOLLOW',
+                stat2: 'ОБМЕНОВ',
+                greeting: '<span class="red">🔴 Привет! 🔴</span><br>это мой трейд аккаунт в<br><span class="highlight">Adopt Me!</span><br>',
+                greetingSmall: 'Добавляйся в друзья для обмена 🎁',
+                tradesText: 'Вот какие трейды<br>я могу тебе<br>предложить<br>',
+                tradesSmall: '🎁 выбирай 🎁'
+            },
+            en: {
+                stat1: 'FOLLOWERS',
+                stat2: 'TRADES',
+                greeting: '<span class="red">🔴 Hello! 🔴</span><br>this is my trade account in<br><span class="highlight">Adopt Me!</span><br>',
+                greetingSmall: 'Add me as a friend to trade 🎁',
+                tradesText: 'Here are the trades<br>I can offer<br>you<br>',
+                tradesSmall: '🎁 choose 🎁'
+            }
+        };
+        
+        langButton.addEventListener('click', function() {
+            if (currentLang === 'ru') {
+                // Переключаем на английский
+                stat1.textContent = texts.en.stat1;
+                stat2.textContent = texts.en.stat2;
+                greeting.innerHTML = texts.en.greeting;
+                greetingSmall.textContent = texts.en.greetingSmall;
+                tradesText.innerHTML = texts.en.tradesText;
+                tradesSmall.textContent = texts.en.tradesSmall;
+                langButton.textContent = '🇬🇧';
+                currentLang = 'en';
+            } else {
+                // Переключаем на русский
+                stat1.textContent = texts.ru.stat1;
+                stat2.textContent = texts.ru.stat2;
+                greeting.innerHTML = texts.ru.greeting;
+                greetingSmall.textContent = texts.ru.greetingSmall;
+                tradesText.innerHTML = texts.ru.tradesText;
+                tradesSmall.textContent = texts.ru.tradesSmall;
+                langButton.textContent = '🇷🇺';
+                currentLang = 'ru';
+            }
         });
     </script>
 </body>
