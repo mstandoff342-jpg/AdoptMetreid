@@ -112,41 +112,6 @@
             text-transform: uppercase;
         }
 
-        /* ========== ПРИВЕТСТВИЕ ========== */
-        .greeting-block {
-            margin: 20px 0;
-            padding: 0;
-        }
-
-        .greeting-text {
-            font-size: 22px;
-            color: white;
-            text-shadow: 0 0 8px #ff69b4;
-            line-height: 1.5;
-            text-align: left;
-        }
-
-        .greeting-text .red {
-            color: #ff4d4d;
-            text-shadow: 0 0 10px #ff4d4d;
-            font-weight: 600;
-            font-size: 26px;
-        }
-
-        .greeting-text .highlight {
-            font-size: 30px;
-            font-weight: 700;
-            color: white;
-            text-shadow: 0 0 15px #ff1493;
-            margin: 3px 0;
-        }
-
-        .greeting-text .small {
-            font-size: 18px;
-            margin-top: 5px;
-            opacity: 0.95;
-        }
-
         /* ========== РАЗДЕЛИТЕЛЬ ========== */
         .divider {
             width: 80%;
@@ -155,31 +120,55 @@
             margin: 25px auto;
         }
 
-        /* ========== ОВАЛ С ТРЕЙДАМИ ========== */
-        .trades-oval {
+        /* ========== ОВАЛ С ПРИВЕТСТВИЕМ ========== */
+        .greeting-oval {
             background: transparent;
             border: 2px solid white;
             border-radius: 60px;
-            padding: 20px 30px;
+            padding: 30px 40px;
             box-shadow: 0 0 20px rgba(255, 105, 180, 0.5);
-            margin: 30px 0 50px 0; /* Увеличен нижний отступ */
+            margin: 30px 0 50px 0;
             width: 100%;
+            display: flex;
+            justify-content: center;
+            align-items: center;
         }
 
-        .trades-text {
-            font-size: 26px;
-            font-weight: 600;
-            color: white;
-            text-shadow: 0 0 10px #ff69b4, 0 0 20px #ff69b4;
-            line-height: 1.4;
+        .greeting-oval-content {
             text-align: center;
+            color: white;
         }
 
-        .trades-text .small {
-            font-size: 22px;
+        .greeting-oval-content .red-part {
+            color: #ff4d4d;
+            font-size: 32px;
+            font-weight: 700;
+            text-shadow: 0 0 15px #ff4d4d, 0 0 30px #ff4d4d;
             display: block;
-            margin-top: 8px;
-            text-shadow: 0 0 8px #ff69b4;
+            margin-bottom: 5px;
+            letter-spacing: 1px;
+        }
+
+        .greeting-oval-content .main-text {
+            font-size: 28px;
+            font-weight: 500;
+            text-shadow: 0 0 10px #ff69b4;
+            line-height: 1.5;
+        }
+
+        .greeting-oval-content .adopt-text {
+            font-size: 38px;
+            font-weight: 800;
+            text-shadow: 0 0 20px #ff1493, 0 0 40px #ff69b4;
+            margin: 5px 0;
+            letter-spacing: 2px;
+        }
+
+        .greeting-oval-content .friend-text {
+            font-size: 26px;
+            font-weight: 500;
+            text-shadow: 0 0 10px #ff69b4;
+            margin-top: 10px;
         }
 
         /* ========== РОЗОВАЯ ПОЛОСА С РОЗЫГРЫШЕМ ========== */
@@ -428,6 +417,22 @@
             .squares-container {
                 grid-template-columns: 1fr;
             }
+            
+            .greeting-oval-content .red-part {
+                font-size: 28px;
+            }
+            
+            .greeting-oval-content .main-text {
+                font-size: 24px;
+            }
+            
+            .greeting-oval-content .adopt-text {
+                font-size: 32px;
+            }
+            
+            .greeting-oval-content .friend-text {
+                font-size: 22px;
+            }
         }
 
         @media (max-width: 600px) {
@@ -454,22 +459,6 @@
             
             .stat-label {
                 font-size: 12px;
-            }
-            
-            .greeting-text {
-                font-size: 18px;
-            }
-            
-            .greeting-text .red {
-                font-size: 22px;
-            }
-            
-            .greeting-text .highlight {
-                font-size: 26px;
-            }
-            
-            .trades-text {
-                font-size: 22px;
             }
             
             .rgb-square {
@@ -511,6 +500,26 @@
                 font-size: 20px;
                 padding: 12px 25px;
             }
+            
+            .greeting-oval {
+                padding: 25px 20px;
+            }
+            
+            .greeting-oval-content .red-part {
+                font-size: 26px;
+            }
+            
+            .greeting-oval-content .main-text {
+                font-size: 22px;
+            }
+            
+            .greeting-oval-content .adopt-text {
+                font-size: 30px;
+            }
+            
+            .greeting-oval-content .friend-text {
+                font-size: 20px;
+            }
         }
 
         @media (max-width: 450px) {
@@ -531,6 +540,22 @@
                 width: 45px;
                 height: 45px;
                 font-size: 24px;
+            }
+            
+            .greeting-oval-content .red-part {
+                font-size: 24px;
+            }
+            
+            .greeting-oval-content .main-text {
+                font-size: 20px;
+            }
+            
+            .greeting-oval-content .adopt-text {
+                font-size: 28px;
+            }
+            
+            .greeting-oval-content .friend-text {
+                font-size: 18px;
             }
         }
     </style>
@@ -563,28 +588,18 @@
                     </div>
                 </div>
             </div>
-
-            <!-- ПРИВЕТСТВИЕ -->
-            <div class="greeting-block">
-                <div class="greeting-text" id="greeting">
-                    <span class="red">🔴 Привет! 🔴</span><br>
-                    это мой трейд аккаунт в<br>
-                    <span class="highlight">Adopt Me!</span><br>
-                    <span class="small" id="greetingSmall">Добавляйся в друзья для обмена 🎁</span>
-                </div>
-            </div>
         </div>
 
         <!-- РАЗДЕЛИТЕЛЬ -->
         <div class="divider"></div>
 
-        <!-- ОВАЛ С ТРЕЙДАМИ -->
-        <div class="trades-oval">
-            <div class="trades-text" id="tradesText">
-                Вот какие трейды<br>
-                я могу тебе<br>
-                предложить<br>
-                <span class="small" id="tradesSmall">🎁 выбирай 🎁</span>
+        <!-- ОВАЛ С ПРИВЕТСТВИЕМ (обновленный) -->
+        <div class="greeting-oval">
+            <div class="greeting-oval-content" id="greetingOval">
+                <span class="red-part">🔴 Привет! 🔴</span>
+                <span class="main-text">это мой трейд аккаунт в</span>
+                <span class="adopt-text">Adopt Me!</span>
+                <span class="friend-text">Добавляйся в друзья для обмена 🎁</span>
             </div>
         </div>
 
@@ -674,28 +689,29 @@
         // Элементы для перевода
         const stat1 = document.getElementById('stat1');
         const stat2 = document.getElementById('stat2');
-        const greeting = document.getElementById('greeting');
-        const greetingSmall = document.getElementById('greetingSmall');
-        const tradesText = document.getElementById('tradesText');
-        const tradesSmall = document.getElementById('tradesSmall');
+        const greetingOval = document.getElementById('greetingOval');
         
         // Тексты на двух языках
         const texts = {
             ru: {
                 stat1: 'FOLLOW',
                 stat2: 'ОБМЕНОВ',
-                greeting: '<span class="red">🔴 Привет! 🔴</span><br>это мой трейд аккаунт в<br><span class="highlight">Adopt Me!</span><br>',
-                greetingSmall: 'Добавляйся в друзья для обмена 🎁',
-                tradesText: 'Вот какие трейды<br>я могу тебе<br>предложить<br>',
-                tradesSmall: '🎁 выбирай 🎁'
+                greeting: `
+                    <span class="red-part">🔴 Привет! 🔴</span>
+                    <span class="main-text">это мой трейд аккаунт в</span>
+                    <span class="adopt-text">Adopt Me!</span>
+                    <span class="friend-text">Добавляйся в друзья для обмена 🎁</span>
+                `
             },
             en: {
                 stat1: 'FOLLOWERS',
                 stat2: 'TRADES',
-                greeting: '<span class="red">🔴 Hello! 🔴</span><br>this is my trade account in<br><span class="highlight">Adopt Me!</span><br>',
-                greetingSmall: 'Add me as a friend to trade 🎁',
-                tradesText: 'Here are the trades<br>I can offer<br>you<br>',
-                tradesSmall: '🎁 choose 🎁'
+                greeting: `
+                    <span class="red-part">🔴 Hello! 🔴</span>
+                    <span class="main-text">this is my trade account in</span>
+                    <span class="adopt-text">Adopt Me!</span>
+                    <span class="friend-text">Add me as a friend to trade 🎁</span>
+                `
             }
         };
         
@@ -704,20 +720,14 @@
                 // Переключаем на английский
                 stat1.textContent = texts.en.stat1;
                 stat2.textContent = texts.en.stat2;
-                greeting.innerHTML = texts.en.greeting;
-                greetingSmall.textContent = texts.en.greetingSmall;
-                tradesText.innerHTML = texts.en.tradesText;
-                tradesSmall.textContent = texts.en.tradesSmall;
+                greetingOval.innerHTML = texts.en.greeting;
                 langButton.textContent = '🇬🇧';
                 currentLang = 'en';
             } else {
                 // Переключаем на русский
                 stat1.textContent = texts.ru.stat1;
                 stat2.textContent = texts.ru.stat2;
-                greeting.innerHTML = texts.ru.greeting;
-                greetingSmall.textContent = texts.ru.greetingSmall;
-                tradesText.innerHTML = texts.ru.tradesText;
-                tradesSmall.textContent = texts.ru.tradesSmall;
+                greetingOval.innerHTML = texts.ru.greeting;
                 langButton.textContent = '🇷🇺';
                 currentLang = 'ru';
             }
