@@ -15,7 +15,21 @@
 
         body {
             min-height: 100vh;
-            background-color: #684a77;
+            background-color: #ffd0dd;
+            background-image: 
+                radial-gradient(circle at 10% 20%, rgba(255, 255, 255, 0.5) 4px, transparent 4px),
+                radial-gradient(circle at 25% 60%, rgba(255, 255, 255, 0.6) 8px, transparent 8px),
+                radial-gradient(circle at 70% 15%, rgba(255, 255, 255, 0.5) 6px, transparent 6px),
+                radial-gradient(circle at 85% 45%, rgba(255, 255, 255, 0.7) 5px, transparent 5px),
+                radial-gradient(circle at 40% 80%, rgba(255, 255, 255, 0.5) 7px, transparent 7px),
+                radial-gradient(circle at 90% 75%, rgba(255, 255, 255, 0.6) 4px, transparent 4px),
+                radial-gradient(circle at 15% 90%, rgba(255, 255, 255, 0.5) 6px, transparent 6px),
+                radial-gradient(circle at 55% 30%, rgba(255, 255, 255, 0.6) 5px, transparent 5px);
+            background-size: 200px 200px, 250px 250px, 180px 180px, 220px 220px,
+                             190px 190px, 210px 210px, 230px 230px, 240px 240px;
+            background-position: 0% 0%, 10% 20%, 30% 70%, 80% 10%,
+                                 50% 90%, 95% 40%, 5% 85%, 60% 25%;
+            background-repeat: repeat;
             display: flex;
             justify-content: center;
             padding: 20px;
@@ -25,9 +39,200 @@
         .container {
             max-width: 900px;
             width: 100%;
+            position: relative;
         }
 
-        /* ========== КАРТОЧКА ПРОФИЛЯ ========== */
+        /* ========== КНОПКА МЕНЮ (3 ПОЛОСКИ) ========== */
+        .menu-toggle {
+            position: fixed;
+            top: 30px;
+            left: 30px;
+            width: 60px;
+            height: 60px;
+            background: rgba(255, 255, 255, 0.2);
+            backdrop-filter: blur(10px);
+            border: 2px solid rgba(255, 255, 255, 0.3);
+            border-radius: 50%;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            gap: 8px;
+            cursor: pointer;
+            z-index: 1001;
+            box-shadow: 0 0 20px rgba(255, 105, 180, 0.3);
+            transition: all 0.3s ease;
+        }
+
+        .menu-toggle:hover {
+            transform: scale(1.1);
+            box-shadow: 0 0 30px rgba(255, 105, 180, 0.6);
+        }
+
+        .menu-toggle span {
+            width: 30px;
+            height: 3px;
+            background: white;
+            border-radius: 3px;
+            transition: all 0.3s ease;
+            box-shadow: 0 0 10px rgba(255, 255, 255, 0.8);
+        }
+
+        .menu-toggle.active span:nth-child(1) {
+            transform: rotate(45deg) translate(8px, 8px);
+        }
+
+        .menu-toggle.active span:nth-child(2) {
+            opacity: 0;
+        }
+
+        .menu-toggle.active span:nth-child(3) {
+            transform: rotate(-45deg) translate(8px, -8px);
+        }
+
+        /* ========== БОКОВОЕ МЕНЮ ========== */
+        .side-menu {
+            position: fixed;
+            top: 0;
+            left: -350px;
+            width: 320px;
+            height: 100vh;
+            background: rgba(255, 230, 240, 0.3);
+            backdrop-filter: blur(15px);
+            border-right: 2px solid rgba(255, 255, 255, 0.3);
+            box-shadow: 0 0 40px rgba(255, 105, 180, 0.3);
+            z-index: 1000;
+            transition: left 0.4s cubic-bezier(0.68, -0.55, 0.265, 1.55);
+            padding: 100px 20px 30px;
+            display: flex;
+            flex-direction: column;
+        }
+
+        .side-menu.active {
+            left: 0;
+        }
+
+        /* Профиль в меню */
+        .menu-profile {
+            background: rgba(255, 255, 255, 0.2);
+            backdrop-filter: blur(5px);
+            border: 2px solid rgba(255, 255, 255, 0.3);
+            border-radius: 60px;
+            padding: 25px 20px;
+            margin-bottom: 30px;
+            text-align: center;
+            box-shadow: 0 0 30px rgba(255, 182, 193, 0.5);
+            animation: menuGlow 3s infinite alternate;
+        }
+
+        @keyframes menuGlow {
+            0% { box-shadow: 0 0 20px rgba(255, 182, 193, 0.5); }
+            100% { box-shadow: 0 0 40px rgba(255, 105, 180, 0.8); }
+        }
+
+        .menu-avatar {
+            width: 90px;
+            height: 90px;
+            border-radius: 50%;
+            border: 3px solid white;
+            margin: 0 auto 15px;
+            overflow: hidden;
+            box-shadow: 0 0 20px #ff69b4;
+        }
+
+        .menu-avatar img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+        }
+
+        .menu-profile h3 {
+            font-size: 24px;
+            color: white;
+            text-shadow: 2px 2px 0 #ff8aae;
+            margin-bottom: 5px;
+        }
+
+        .menu-profile p {
+            font-size: 16px;
+            color: rgba(255, 255, 255, 0.9);
+            text-shadow: 0 0 5px rgba(255, 255, 255, 0.5);
+        }
+
+        /* Кнопки меню */
+        .menu-items {
+            display: flex;
+            flex-direction: column;
+            gap: 15px;
+        }
+
+        .menu-item {
+            background: rgba(255, 255, 255, 0.15);
+            backdrop-filter: blur(5px);
+            border: 2px solid rgba(255, 255, 255, 0.3);
+            border-radius: 60px;
+            padding: 18px 25px;
+            color: white;
+            font-size: 22px;
+            font-weight: 600;
+            text-align: left;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            display: flex;
+            align-items: center;
+            gap: 15px;
+            box-shadow: 0 0 15px rgba(255, 105, 180, 0.2);
+        }
+
+        .menu-item:hover {
+            transform: translateX(10px);
+            background: rgba(255, 255, 255, 0.25);
+            box-shadow: 0 0 30px rgba(255, 105, 180, 0.6);
+        }
+
+        .menu-item.active {
+            background: linear-gradient(135deg, rgba(255, 182, 193, 0.4), rgba(255, 105, 180, 0.4));
+            box-shadow: 0 0 30px rgba(255, 105, 180, 0.8);
+        }
+
+        .menu-item .icon {
+            font-size: 28px;
+        }
+
+        /* Стикер котика для вкладки Обмены */
+        .menu-item[data-page="trades"] .icon {
+            filter: drop-shadow(0 0 10px rgba(255, 255, 255, 0.8));
+            animation: catBounce 2s infinite;
+        }
+
+        @keyframes catBounce {
+            0%, 100% { transform: translateY(0); }
+            50% { transform: translateY(-3px); }
+        }
+
+        /* ========== ОСНОВНОЙ КОНТЕНТ ========== */
+        .main-content {
+            width: 100%;
+            transition: all 0.3s ease;
+            margin-left: 0;
+        }
+
+        /* ========== СТРАНИЦА ПРОФИЛЯ ========== */
+        .page {
+            display: none;
+            animation: fadeIn 0.5s ease;
+        }
+
+        .page.active {
+            display: block;
+        }
+
+        @keyframes fadeIn {
+            from { opacity: 0; transform: translateY(20px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+
+        /* КАРТОЧКА ПРОФИЛЯ */
         .profile-card {
             background: rgba(255, 230, 240, 0.25);
             backdrop-filter: blur(10px);
@@ -37,9 +242,12 @@
             box-shadow: 0 20px 40px rgba(255, 150, 180, 0.2);
             margin-bottom: 25px;
             width: 100%;
+            max-width: 700px;
+            margin-left: auto;
+            margin-right: auto;
+            margin-top: 100px; /* Отступ для кнопки меню */
         }
 
-        /* Профиль в полосу - горизонтальное расположение */
         .profile-header {
             display: flex;
             align-items: center;
@@ -47,7 +255,6 @@
             flex-wrap: wrap;
         }
 
-        /* ===== АВАТАРКА ===== */
         .avatar-circle {
             width: 100px;
             height: 100px;
@@ -62,10 +269,8 @@
             width: 100%;
             height: 100%;
             object-fit: cover;
-            display: block;
         }
 
-        /* ===== ИНФОРМАЦИЯ ===== */
         .user-info {
             flex: 1;
         }
@@ -82,10 +287,8 @@
             font-size: 18px;
             color: rgba(255, 255, 255, 0.9);
             font-weight: 400;
-            letter-spacing: 0.5px;
         }
 
-        /* ===== СТАТИСТИКА ===== */
         .stats-container {
             display: flex;
             gap: 30px;
@@ -101,18 +304,45 @@
             font-weight: 700;
             color: white;
             text-shadow: 2px 2px 0 #ff8aae;
-            line-height: 1.2;
         }
 
         .stat-label {
             font-size: 14px;
             color: white;
             font-weight: 600;
-            letter-spacing: 1px;
             text-transform: uppercase;
         }
 
-        /* ========== РАЗДЕЛИТЕЛЬ ========== */
+        /* КНОПКА ДОБАВИТЬ В ДРУЗЬЯ */
+        .add-friend-btn {
+            display: inline-block;
+            background: linear-gradient(135deg, #ff69b4, #ff1493);
+            color: white;
+            font-size: 24px;
+            font-weight: 700;
+            text-decoration: none;
+            padding: 15px 40px;
+            border-radius: 60px;
+            border: 2px solid rgba(255, 255, 255, 0.5);
+            box-shadow: 0 0 30px rgba(255, 105, 180, 0.6);
+            margin-top: 25px;
+            width: 100%;
+            text-align: center;
+            transition: all 0.3s ease;
+            animation: buttonPulse 2s infinite;
+        }
+
+        .add-friend-btn:hover {
+            transform: scale(1.02);
+            box-shadow: 0 0 40px #ff69b4, 0 0 60px #ff1493;
+        }
+
+        @keyframes buttonPulse {
+            0% { box-shadow: 0 0 20px #ff69b4, 0 0 40px #ff1493; }
+            50% { box-shadow: 0 0 40px #ff69b4, 0 0 70px #ff1493; }
+            100% { box-shadow: 0 0 20px #ff69b4, 0 0 40px #ff1493; }
+        }
+
         .divider {
             width: 80%;
             height: 2px;
@@ -120,7 +350,6 @@
             margin: 25px auto;
         }
 
-        /* ========== ОВАЛ С ПРИВЕТСТВИЕМ ========== */
         .greeting-oval {
             background: transparent;
             border: 2px solid white;
@@ -146,14 +375,12 @@
             text-shadow: 0 0 15px #ff4d4d, 0 0 30px #ff4d4d;
             display: block;
             margin-bottom: 5px;
-            letter-spacing: 1px;
         }
 
         .greeting-oval-content .main-text {
             font-size: 28px;
             font-weight: 500;
             text-shadow: 0 0 10px #ff69b4;
-            line-height: 1.5;
         }
 
         .greeting-oval-content .adopt-text {
@@ -161,7 +388,6 @@
             font-weight: 800;
             text-shadow: 0 0 20px #ff1493, 0 0 40px #ff69b4;
             margin: 5px 0;
-            letter-spacing: 2px;
         }
 
         .greeting-oval-content .friend-text {
@@ -171,97 +397,40 @@
             margin-top: 10px;
         }
 
-        /* ========== РОЗОВАЯ ПОЛОСА С РОЗЫГРЫШЕМ ========== */
-        .giveaway-banner {
-            background: linear-gradient(135deg, #ff69b4, #ff1493);
-            border-radius: 50px;
-            padding: 20px 30px;
-            margin: 30px 0 40px 0;
-            display: flex;
-            align-items: center;
-            justify-content: space-between;
-            flex-wrap: wrap;
-            gap: 20px;
-            border: 2px solid rgba(255, 255, 255, 0.5);
-            box-shadow: 0 0 30px rgba(255, 105, 180, 0.6);
+        /* ========== СТРАНИЦА ОБМЕНОВ ========== */
+        .trades-page {
+            padding-top: 100px; /* Отступ для кнопки меню */
         }
 
-        .giveaway-text {
-            flex: 1;
-            min-width: 250px;
-        }
-
-        .giveaway-text p {
+        .trades-title {
+            text-align: center;
             color: white;
-            font-size: 18px;
-            font-weight: 600;
-            text-shadow: 0 0 10px rgba(0, 0, 0, 0.3);
-            line-height: 1.5;
-        }
-
-        .giveaway-text span {
-            font-size: 22px;
-            font-weight: 800;
-            color: #ffe600;
-            text-shadow: 0 0 15px rgba(255, 255, 255, 0.8);
-        }
-
-        .telegram-button {
-            background: #0088cc;
-            display: inline-flex;
-            align-items: center;
-            gap: 10px;
-            padding: 15px 35px;
-            border-radius: 60px;
-            text-decoration: none;
-            color: white;
+            font-size: 36px;
             font-weight: 700;
-            font-size: 24px;
-            border: 2px solid white;
-            box-shadow: 0 0 20px rgba(0, 136, 204, 0.8);
-            transition: all 0.3s;
-            white-space: nowrap;
+            text-shadow: 0 0 20px #ff1493, 0 0 40px #ff69b4;
+            margin-bottom: 30px;
+            animation: titleGlow 3s infinite;
         }
 
-        .telegram-button:hover {
-            transform: scale(1.05);
-            box-shadow: 0 0 30px #0088cc, 0 0 60px rgba(255, 255, 255, 0.5);
+        @keyframes titleGlow {
+            0% { text-shadow: 0 0 20px #ff1493, 0 0 40px #ff69b4; }
+            50% { text-shadow: 0 0 40px #ff1493, 0 0 70px #ff69b4; }
+            100% { text-shadow: 0 0 20px #ff1493, 0 0 40px #ff69b4; }
         }
 
-        .telegram-button img {
-            width: 30px;
-            height: 30px;
-            filter: brightness(0) invert(1);
-        }
-
-        /* ========== КОНТЕЙНЕР ДЛЯ КВАДРАТОВ ========== */
-        .squares-container {
-            display: grid;
-            grid-template-columns: repeat(2, 1fr);
-            gap: 25px;
-            margin: 40px 0;
-            width: 100%;
-        }
-
-        /* ========== RGB КВАДРАТЫ ========== */
-        .rgb-square {
-            width: 100%;
-            height: 450px;
-            border: 4px solid white;
-            border-radius: 30px;
-            background: rgba(0, 0, 0, 0.2);
-            backdrop-filter: blur(5px);
+        /* ОВАЛЬНЫЙ RGB КОНТЕЙНЕР */
+        .trades-oval-container {
+            background: transparent;
+            border: 3px solid white;
+            border-radius: 80px;
+            padding: 40px 30px;
             box-shadow: 
                 0 0 20px #ff0000,
                 0 0 40px #00ff00,
                 0 0 60px #0000ff,
                 0 0 80px #ff00ff;
             animation: rgbGlow 4s infinite alternate;
-            padding: 20px;
-            display: flex;
-            flex-direction: column;
-            align-items: center;
-            justify-content: center;
+            margin-bottom: 40px;
         }
 
         @keyframes rgbGlow {
@@ -272,119 +441,103 @@
             100% { box-shadow: 0 0 20px #0000ff, 0 0 40px #ff00ff, 0 0 60px #00ffff; }
         }
 
-        /* ===== НАДПИСЬ LEGENDARY ===== */
-        .legendary-title {
+        /* СЕТКА КАРТОЧЕК 3 В РЯД */
+        .trades-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 20px;
+            margin-top: 30px;
+        }
+
+        /* УМЕНЬШЕННЫЕ КАРТОЧКИ */
+        .trade-card {
+            background: rgba(0, 0, 0, 0.2);
+            backdrop-filter: blur(5px);
+            border: 3px solid white;
+            border-radius: 30px;
+            padding: 15px;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            box-shadow: 0 0 30px rgba(255, 105, 180, 0.5);
+            transition: all 0.3s ease;
+            height: 320px;
+        }
+
+        .trade-card:hover {
+            transform: translateY(-5px) scale(1.02);
+            box-shadow: 0 0 40px #ff69b4, 0 0 60px #ff1493;
+        }
+
+        .trade-card .legendary-title {
             display: flex;
             align-items: center;
             justify-content: center;
-            gap: 10px;
-            margin-bottom: 15px;
+            gap: 8px;
+            margin-bottom: 10px;
         }
 
-        .legendary-title .dot {
-            width: 6px;
-            height: 6px;
-            background-color: black;
+        .trade-card .legendary-title .dot {
+            width: 5px;
+            height: 5px;
+            background-color: white;
             border-radius: 50%;
-            box-shadow: 0 0 5px black, 0 0 10px black;
+            box-shadow: 0 0 8px white;
         }
 
-        .legendary-title span {
-            font-size: 24px;
+        .trade-card .legendary-title span {
+            font-size: 18px;
             font-weight: 800;
-            color: black;
-            text-shadow: 0 0 5px black, 0 0 10px black;
-            letter-spacing: 2px;
-            text-transform: uppercase;
-        }
-
-        /* ===== ФОТО ПИТОМЦА ===== */
-        .pet-image {
-            width: 200px;
-            height: 200px;
-            border-radius: 25px;
-            border: 3px solid rgba(255, 255, 255, 0.6);
-            box-shadow: 0 0 30px rgba(255, 105, 180, 0.8);
-            object-fit: cover;
-            margin-bottom: 20px;
-            transition: transform 0.3s;
-        }
-
-        .pet-image:hover {
-            transform: scale(1.02);
-        }
-
-        /* ===== РОЗОВАЯ КНОПКА ===== */
-        .trade-button {
-            display: inline-block;
-            background: linear-gradient(135deg, #ff69b4, #ff1493, #ff69b4);
-            background-size: 200% 200%;
             color: white;
-            font-size: 22px;
+            text-shadow: 0 0 8px white;
+            letter-spacing: 1px;
+        }
+
+        .trade-card .pet-image {
+            width: 140px;
+            height: 140px;
+            border-radius: 20px;
+            border: 2px solid white;
+            box-shadow: 0 0 25px rgba(255, 105, 180, 0.8);
+            object-fit: cover;
+            margin-bottom: 12px;
+        }
+
+        .trade-card .trade-button {
+            display: inline-block;
+            background: linear-gradient(135deg, #ff69b4, #ff1493);
+            color: white;
+            font-size: 16px;
             font-weight: 700;
             text-decoration: none;
-            padding: 12px 30px;
-            border-radius: 60px;
+            padding: 8px 20px;
+            border-radius: 40px;
             border: 2px solid rgba(255, 255, 255, 0.5);
-            box-shadow: 
-                0 0 20px #ff69b4,
-                0 0 40px #ff1493,
-                0 0 60px #ff69b4;
-            animation: buttonGlow 2s infinite alternate, gradientMove 3s infinite;
+            box-shadow: 0 0 15px #ff69b4;
             transition: all 0.3s;
-            letter-spacing: 2px;
             text-transform: uppercase;
             width: 100%;
-            max-width: 280px;
+            max-width: 160px;
             text-align: center;
-            font-size: 20px;
         }
 
-        @keyframes buttonGlow {
-            0% {
-                box-shadow: 0 0 20px #ff69b4, 0 0 40px #ff1493;
-            }
-            100% {
-                box-shadow: 0 0 30px #ff1493, 0 0 60px #ff69b4, 0 0 90px #ffb6c1;
-            }
+        .trade-card .trade-button:hover {
+            transform: scale(1.05);
+            box-shadow: 0 0 25px #ff1493, 0 0 40px #ff69b4;
         }
 
-        @keyframes gradientMove {
-            0% {
-                background-position: 0% 50%;
-            }
-            50% {
-                background-position: 100% 50%;
-            }
-            100% {
-                background-position: 0% 50%;
-            }
-        }
-
-        .trade-button:hover {
-            transform: translateY(-3px) scale(1.02);
-            box-shadow: 
-                0 0 30px #ff69b4,
-                0 0 60px #ff1493,
-                0 0 90px #ffb6c1;
-        }
-
-        .trade-button:active {
-            transform: translateY(0) scale(0.95);
-        }
-
-        /* ========== КНОПКА ПЕРЕКЛЮЧЕНИЯ ЯЗЫКА ========== */
+        /* ========== КНОПКА ЯЗЫКА ========== */
         .lang-switcher {
             position: fixed;
             bottom: 30px;
             right: 30px;
-            z-index: 1000;
+            z-index: 1002;
             cursor: pointer;
             width: 60px;
             height: 60px;
             border-radius: 50%;
             box-shadow: 0 0 20px rgba(255, 255, 255, 0.5);
-            transition: transform 0.3s;
+            transition: all 0.3s;
             background: white;
             display: flex;
             align-items: center;
@@ -394,11 +547,21 @@
         }
 
         .lang-switcher:hover {
-            transform: scale(1.1);
+            transform: scale(1.1) rotate(10deg);
         }
 
         /* ========== АДАПТАЦИЯ ========== */
-        @media (max-width: 700px) {
+        @media (max-width: 800px) {
+            .trades-grid {
+                grid-template-columns: repeat(2, 1fr);
+            }
+        }
+
+        @media (max-width: 600px) {
+            .trades-grid {
+                grid-template-columns: 1fr;
+            }
+            
             .profile-header {
                 flex-direction: column;
                 text-align: center;
@@ -409,15 +572,6 @@
                 justify-content: center;
             }
             
-            .giveaway-banner {
-                flex-direction: column;
-                text-align: center;
-            }
-            
-            .squares-container {
-                grid-template-columns: 1fr;
-            }
-            
             .greeting-oval-content .red-part {
                 font-size: 28px;
             }
@@ -433,335 +587,227 @@
             .greeting-oval-content .friend-text {
                 font-size: 22px;
             }
-        }
-
-        @media (max-width: 600px) {
-            .container {
-                max-width: 100%;
-            }
             
-            .avatar-circle {
-                width: 90px;
-                height: 90px;
-            }
-            
-            .user-info h1 {
-                font-size: 32px;
-            }
-            
-            .user-info h2 {
-                font-size: 16px;
-            }
-            
-            .stat-value {
-                font-size: 24px;
-            }
-            
-            .stat-label {
-                font-size: 12px;
-            }
-            
-            .rgb-square {
-                height: 400px;
-            }
-            
-            .pet-image {
-                width: 160px;
-                height: 160px;
-            }
-            
-            .trade-button {
-                font-size: 18px;
-                padding: 10px 20px;
-                max-width: 240px;
-            }
-            
-            .legendary-title span {
-                font-size: 20px;
-            }
-            
-            .lang-switcher {
+            .menu-toggle {
+                top: 20px;
+                left: 20px;
                 width: 50px;
                 height: 50px;
-                font-size: 28px;
-                bottom: 20px;
-                right: 20px;
             }
             
-            .giveaway-text p {
-                font-size: 16px;
-            }
-            
-            .giveaway-text span {
-                font-size: 20px;
-            }
-            
-            .telegram-button {
-                font-size: 20px;
-                padding: 12px 25px;
-            }
-            
-            .greeting-oval {
-                padding: 25px 20px;
-            }
-            
-            .greeting-oval-content .red-part {
-                font-size: 26px;
-            }
-            
-            .greeting-oval-content .main-text {
-                font-size: 22px;
-            }
-            
-            .greeting-oval-content .adopt-text {
-                font-size: 30px;
-            }
-            
-            .greeting-oval-content .friend-text {
-                font-size: 20px;
-            }
-        }
-
-        @media (max-width: 450px) {
-            .stats-container {
-                gap: 20px;
-            }
-            
-            .rgb-square {
-                height: 380px;
-            }
-            
-            .pet-image {
-                width: 140px;
-                height: 140px;
-            }
-            
-            .lang-switcher {
-                width: 45px;
-                height: 45px;
-                font-size: 24px;
-            }
-            
-            .greeting-oval-content .red-part {
-                font-size: 24px;
-            }
-            
-            .greeting-oval-content .main-text {
-                font-size: 20px;
-            }
-            
-            .greeting-oval-content .adopt-text {
-                font-size: 28px;
-            }
-            
-            .greeting-oval-content .friend-text {
-                font-size: 18px;
+            .side-menu {
+                width: 280px;
             }
         }
     </style>
 </head>
 <body>
-    <div class="container">
-        <!-- ========== КАРТОЧКА ПРОФИЛЯ ========== -->
-        <div class="profile-card">
-            <div class="profile-header">
-                <!-- АВАТАРКА -->
-                <div class="avatar-circle">
-                    <img src="avatar.jpg" alt="Liza6666">
-                </div>
+    <!-- КНОПКА МЕНЮ 3 ПОЛОСКИ -->
+    <div class="menu-toggle" id="menuToggle">
+        <span></span>
+        <span></span>
+        <span></span>
+    </div>
 
-                <!-- ИМЯ И СТАТУС -->
-                <div class="user-info">
-                    <h1>Liza6666</h1>
-                    <h2>Pro Trader • Looking for trades</h2>
-                </div>
-
-                <!-- СТАТИСТИКА -->
-                <div class="stats-container">
-                    <div class="stat-item">
-                        <div class="stat-value">2.5K</div>
-                        <div class="stat-label" id="stat1">FOLLOW</div>
-                    </div>
-                    <div class="stat-item">
-                        <div class="stat-value">168</div>
-                        <div class="stat-label" id="stat2">ОБМЕНОВ</div>
-                    </div>
-                </div>
+    <!-- БОКОВОЕ МЕНЮ -->
+    <div class="side-menu" id="sideMenu">
+        <div class="menu-profile">
+            <div class="menu-avatar">
+                <img src="avatar.jpg" alt="Liza6666" onerror="this.src='https://via.placeholder.com/90x90/ffd0dd/ffffff?text=User'">
             </div>
+            <h3>Liza6666</h3>
+            <p>Top Trader</p>
         </div>
-
-        <!-- РАЗДЕЛИТЕЛЬ -->
-        <div class="divider"></div>
-
-        <!-- ОВАЛ С ПРИВЕТСТВИЕМ (обновленный) -->
-        <div class="greeting-oval">
-            <div class="greeting-oval-content" id="greetingOval">
-                <span class="red-part">🔴 Привет! 🔴</span>
-                <span class="main-text">это мой трейд аккаунт в</span>
-                <span class="adopt-text">Adopt Me!</span>
-                <span class="friend-text">Добавляйся в друзья для обмена 🎁</span>
+        
+        <div class="menu-items">
+            <div class="menu-item active" data-page="profile">
+                <span class="icon">👤</span>
+                <span>Профиль</span>
             </div>
-        </div>
-
-        <!-- РОЗОВАЯ ПОЛОСА С РОЗЫГРЫШЕМ -->
-        <div class="giveaway-banner">
-            <div class="giveaway-text">
-                <p>
-                    <span>🎉 В честь открытия нашего сайта 🎉</span><br>
-                    Розыгрыш Легендарного Пета!<br>
-                    Заходи в наш Telegram канал и участвуй в розыгрыше
-                </p>
-            </div>
-            <a href="https://t.me/adoptmeofficaltreid" class="telegram-button" target="_blank">
-                <span>📱</span> Telegram
-            </a>
-        </div>
-
-        <!-- КОНТЕЙНЕР С КВАДРАТАМИ (6 КВАДРАТОВ) -->
-        <div class="squares-container">
-            <!-- ПЕРВЫЙ КВАДРАТ С ДРАКОНОМ -->
-            <div class="rgb-square">
-                <div class="legendary-title">
-                    <span class="dot"></span>
-                    <span>LEGENDARY</span>
-                    <span class="dot"></span>
-                </div>
-                <img src="Dragon1.png" 
-                     alt="Dragon" 
-                     class="pet-image"
-                     onerror="this.src='https://via.placeholder.com/280x280/684a77/ffffff?text=Dragon'">
-                <a href="https://roblox.com.py/users/2561969857/profile" 
-                   class="trade-button" 
-                   target="_blank">
-                    🔄 ОБМЕН
-                </a>
-            </div>
-            
-            <!-- ВТОРОЙ КВАДРАТ С CHERRY -->
-            <div class="rgb-square">
-                <div class="legendary-title">
-                    <span class="dot"></span>
-                    <span>LEGENDARY</span>
-                    <span class="dot"></span>
-                </div>
-                <img src="cher1.png" 
-                     alt="Cherry" 
-                     class="pet-image"
-                     onerror="this.src='https://via.placeholder.com/280x280/684a77/ffffff?text=Cherry'">
-                <a href="https://roblox.com.py/users/2561969857/profile" 
-                   class="trade-button" 
-                   target="_blank">
-                    🔄 ОБМЕН
-                </a>
-            </div>
-            
-            <!-- ТРЕТИЙ КВАДРАТ С ALEN1 -->
-            <div class="rgb-square">
-                <div class="legendary-title">
-                    <span class="dot"></span>
-                    <span>LEGENDARY</span>
-                    <span class="dot"></span>
-                </div>
-                <img src="alen1.JPG" 
-                     alt="Alen1" 
-                     class="pet-image"
-                     onerror="this.src='https://via.placeholder.com/280x280/684a77/ffffff?text=Alen1'">
-                <a href="https://roblox.com.py/users/2561969857/profile" 
-                   class="trade-button" 
-                   target="_blank">
-                    🔄 ОБМЕН
-                </a>
-            </div>
-            
-            <!-- ЧЕТВЕРТЫЙ КВАДРАТ С DRAGON2 -->
-            <div class="rgb-square">
-                <div class="legendary-title">
-                    <span class="dot"></span>
-                    <span>LEGENDARY</span>
-                    <span class="dot"></span>
-                </div>
-                <img src="Dragon2.JPG" 
-                     alt="Dragon2" 
-                     class="pet-image"
-                     onerror="this.src='https://via.placeholder.com/280x280/684a77/ffffff?text=Dragon2'">
-                <a href="https://roblox.com.py/users/2561969857/profile" 
-                   class="trade-button" 
-                   target="_blank">
-                    🔄 ОБМЕН
-                </a>
-            </div>
-
-            <!-- ПЯТЫЙ КВАДРАТ С BET1 -->
-            <div class="rgb-square">
-                <div class="legendary-title">
-                    <span class="dot"></span>
-                    <span>LEGENDARY</span>
-                    <span class="dot"></span>
-                </div>
-                <img src="Bet1.JPG" 
-                     alt="Bet1" 
-                     class="pet-image"
-                     onerror="this.src='https://via.placeholder.com/280x280/684a77/ffffff?text=Bet1'">
-                <a href="https://roblox.com.py/users/2561969857/profile" 
-                   class="trade-button" 
-                   target="_blank">
-                    🔄 ОБМЕН
-                </a>
-            </div>
-
-            <!-- ШЕСТОЙ КВАДРАТ С BET2 -->
-            <div class="rgb-square">
-                <div class="legendary-title">
-                    <span class="dot"></span>
-                    <span>LEGENDARY</span>
-                    <span class="dot"></span>
-                </div>
-                <img src="Bet2.JPG" 
-                     alt="Bet2" 
-                     class="pet-image"
-                     onerror="this.src='https://via.placeholder.com/280x280/684a77/ffffff?text=Bet2'">
-                <a href="https://roblox.com.py/users/2561969857/profile" 
-                   class="trade-button" 
-                   target="_blank">
-                    🔄 ОБМЕН
-                </a>
+            <div class="menu-item" data-page="trades">
+                <span class="icon">🐱</span>
+                <span>Обмены</span>
             </div>
         </div>
     </div>
 
-    <!-- КНОПКА ПЕРЕКЛЮЧЕНИЯ ЯЗЫКА -->
+    <div class="container">
+        <!-- СТРАНИЦА ПРОФИЛЯ -->
+        <div class="page active" id="profilePage">
+            <div class="profile-card">
+                <div class="profile-header">
+                    <div class="avatar-circle">
+                        <img src="avatar.jpg" alt="Liza6666" onerror="this.src='https://via.placeholder.com/100x100/ffd0dd/ffffff?text=User'">
+                    </div>
+
+                    <div class="user-info">
+                        <h1>Liza6666</h1>
+                        <h2>Pro Trader • Looking for trades</h2>
+                    </div>
+
+                    <div class="stats-container">
+                        <div class="stat-item">
+                            <div class="stat-value" id="stat1">2.5K</div>
+                            <div class="stat-label">FOLLOW</div>
+                        </div>
+                        <div class="stat-item">
+                            <div class="stat-value" id="stat2">168</div>
+                            <div class="stat-label">ОБМЕНОВ</div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- КНОПКА ДОБАВИТЬ В ДРУЗЬЯ -->
+                <a href="https://roblox.com.py/users/2561969857/profile" class="add-friend-btn" target="_blank">
+                    ➕ ДОБАВИТЬ В ДРУЗЬЯ
+                </a>
+            </div>
+
+            <div class="divider"></div>
+
+            <div class="greeting-oval">
+                <div class="greeting-oval-content" id="greetingOval">
+                    <span class="red-part">🔴 Привет! 🔴</span>
+                    <span class="main-text">это мой трейд аккаунт в</span>
+                    <span class="adopt-text">Adopt Me!</span>
+                    <span class="friend-text">Добавляйся в друзья для обмена 🎁</span>
+                </div>
+            </div>
+        </div>
+
+        <!-- СТРАНИЦА ОБМЕНОВ -->
+        <div class="page" id="tradesPage">
+            <div class="trades-page">
+                <h2 class="trades-title">🐱 Мои обмены 🐱</h2>
+                
+                <div class="trades-oval-container">
+                    <div class="trades-grid">
+                        <!-- КАРТОЧКА 1: DRAGON1 -->
+                        <div class="trade-card">
+                            <div class="legendary-title">
+                                <span class="dot"></span>
+                                <span>LEGENDARY</span>
+                                <span class="dot"></span>
+                            </div>
+                            <img src="Dragon1.png" alt="Dragon" class="pet-image" onerror="this.src='https://via.placeholder.com/140x140/684a77/ffffff?text=Dragon'">
+                            <a href="https://roblox.com.py/users/2561969857/profile" class="trade-button" target="_blank">ОБМЕН</a>
+                        </div>
+                        
+                        <!-- КАРТОЧКА 2: CHERRY -->
+                        <div class="trade-card">
+                            <div class="legendary-title">
+                                <span class="dot"></span>
+                                <span>LEGENDARY</span>
+                                <span class="dot"></span>
+                            </div>
+                            <img src="cher1.png" alt="Cherry" class="pet-image" onerror="this.src='https://via.placeholder.com/140x140/684a77/ffffff?text=Cherry'">
+                            <a href="https://roblox.com.py/users/2561969857/profile" class="trade-button" target="_blank">ОБМЕН</a>
+                        </div>
+                        
+                        <!-- КАРТОЧКА 3: ALEN1 -->
+                        <div class="trade-card">
+                            <div class="legendary-title">
+                                <span class="dot"></span>
+                                <span>LEGENDARY</span>
+                                <span class="dot"></span>
+                            </div>
+                            <img src="alen1.JPG" alt="Alen1" class="pet-image" onerror="this.src='https://via.placeholder.com/140x140/684a77/ffffff?text=Alen1'">
+                            <a href="https://roblox.com.py/users/2561969857/profile" class="trade-button" target="_blank">ОБМЕН</a>
+                        </div>
+                        
+                        <!-- КАРТОЧКА 4: DRAGON2 -->
+                        <div class="trade-card">
+                            <div class="legendary-title">
+                                <span class="dot"></span>
+                                <span>LEGENDARY</span>
+                                <span class="dot"></span>
+                            </div>
+                            <img src="Dragon2.JPG" alt="Dragon2" class="pet-image" onerror="this.src='https://via.placeholder.com/140x140/684a77/ffffff?text=Dragon2'">
+                            <a href="https://roblox.com.py/users/2561969857/profile" class="trade-button" target="_blank">ОБМЕН</a>
+                        </div>
+                        
+                        <!-- КАРТОЧКА 5: BET1 -->
+                        <div class="trade-card">
+                            <div class="legendary-title">
+                                <span class="dot"></span>
+                                <span>LEGENDARY</span>
+                                <span class="dot"></span>
+                            </div>
+                            <img src="Bet1.JPG" alt="Bet1" class="pet-image" onerror="this.src='https://via.placeholder.com/140x140/684a77/ffffff?text=Bet1'">
+                            <a href="https://roblox.com.py/users/2561969857/profile" class="trade-button" target="_blank">ОБМЕН</a>
+                        </div>
+                        
+                        <!-- КАРТОЧКА 6: BET2 -->
+                        <div class="trade-card">
+                            <div class="legendary-title">
+                                <span class="dot"></span>
+                                <span>LEGENDARY</span>
+                                <span class="dot"></span>
+                            </div>
+                            <img src="Bet2.JPG" alt="Bet2" class="pet-image" onerror="this.src='https://via.placeholder.com/140x140/684a77/ffffff?text=Bet2'">
+                            <a href="https://roblox.com.py/users/2561969857/profile" class="trade-button" target="_blank">ОБМЕН</a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- КНОПКА ЯЗЫКА -->
     <div class="lang-switcher" id="langSwitcher">🇷🇺</div>
 
     <script>
-        // Заглушки если фото не загрузятся
-        document.querySelectorAll('.pet-image').forEach(img => {
-            img.onerror = function() {
-                if (this.alt === 'Dragon') {
-                    this.src = 'https://via.placeholder.com/280x280/684a77/ffffff?text=Dragon';
-                } else if (this.alt === 'Cherry') {
-                    this.src = 'https://via.placeholder.com/280x280/684a77/ffffff?text=Cherry';
-                } else if (this.alt === 'Alen1') {
-                    this.src = 'https://via.placeholder.com/280x280/684a77/ffffff?text=Alen1';
-                } else if (this.alt === 'Dragon2') {
-                    this.src = 'https://via.placeholder.com/280x280/684a77/ffffff?text=Dragon2';
-                } else if (this.alt === 'Bet1') {
-                    this.src = 'https://via.placeholder.com/280x280/684a77/ffffff?text=Bet1';
-                } else if (this.alt === 'Bet2') {
-                    this.src = 'https://via.placeholder.com/280x280/684a77/ffffff?text=Bet2';
-                }
-            };
+        // ========== МЕНЮ ==========
+        const menuToggle = document.getElementById('menuToggle');
+        const sideMenu = document.getElementById('sideMenu');
+        
+        menuToggle.addEventListener('click', function() {
+            this.classList.toggle('active');
+            sideMenu.classList.toggle('active');
+        });
+
+        // ========== ПЕРЕКЛЮЧЕНИЕ СТРАНИЦ ==========
+        const menuItems = document.querySelectorAll('.menu-item');
+        const pages = document.querySelectorAll('.page');
+        
+        menuItems.forEach(item => {
+            item.addEventListener('click', function() {
+                // Убираем активный класс у всех пунктов меню
+                menuItems.forEach(mi => mi.classList.remove('active'));
+                // Добавляем активный класс текущему пункту
+                this.classList.add('active');
+                
+                // Получаем название страницы
+                const pageId = this.getAttribute('data-page') + 'Page';
+                
+                // Скрываем все страницы
+                pages.forEach(page => page.classList.remove('active'));
+                
+                // Показываем нужную страницу
+                document.getElementById(pageId).classList.add('active');
+                
+                // Закрываем меню после выбора (опционально)
+                menuToggle.classList.remove('active');
+                sideMenu.classList.remove('active');
+            });
+        });
+
+        // ========== ЗАКРЫТИЕ МЕНЮ ПРИ КЛИКЕ ВНЕ ЕГО ==========
+        document.addEventListener('click', function(event) {
+            if (!sideMenu.contains(event.target) && !menuToggle.contains(event.target) && sideMenu.classList.contains('active')) {
+                menuToggle.classList.remove('active');
+                sideMenu.classList.remove('active');
+            }
         });
 
         // ========== ПЕРЕКЛЮЧЕНИЕ ЯЗЫКА ==========
         let currentLang = 'ru';
         const langButton = document.getElementById('langSwitcher');
         
-        // Элементы для перевода
         const stat1 = document.getElementById('stat1');
         const stat2 = document.getElementById('stat2');
         const greetingOval = document.getElementById('greetingOval');
         
-        // Тексты на двух языках
         const texts = {
             ru: {
                 stat1: 'FOLLOW',
@@ -787,20 +833,26 @@
         
         langButton.addEventListener('click', function() {
             if (currentLang === 'ru') {
-                // Переключаем на английский
                 stat1.textContent = texts.en.stat1;
                 stat2.textContent = texts.en.stat2;
                 greetingOval.innerHTML = texts.en.greeting;
                 langButton.textContent = '🇬🇧';
                 currentLang = 'en';
             } else {
-                // Переключаем на русский
                 stat1.textContent = texts.ru.stat1;
                 stat2.textContent = texts.ru.stat2;
                 greetingOval.innerHTML = texts.ru.greeting;
                 langButton.textContent = '🇷🇺';
                 currentLang = 'ru';
             }
+        });
+
+        // Заглушки для изображений
+        document.querySelectorAll('.pet-image').forEach(img => {
+            img.onerror = function() {
+                const alt = this.alt;
+                this.src = `https://via.placeholder.com/140x140/684a77/ffffff?text=${alt}`;
+            };
         });
     </script>
 </body>
