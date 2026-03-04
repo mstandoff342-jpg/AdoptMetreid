@@ -15,7 +15,7 @@
 
         body {
             min-height: 100vh;
-            background-color: #684a77; /* Фиолетовый фон */
+            background-color: #684a77;
             display: flex;
             justify-content: center;
             padding: 20px;
@@ -505,11 +505,111 @@
             width: 100%;
             max-width: 160px;
             text-align: center;
+            cursor: pointer;
+            border: none;
         }
 
         .trade-card .trade-button:hover {
             transform: scale(1.05);
             box-shadow: 0 0 25px #ff1493, 0 0 40px #ff69b4;
+        }
+
+        /* ========== МОДАЛЬНОЕ ОКНО ========== */
+        .modal-overlay {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(0, 0, 0, 0.5);
+            backdrop-filter: blur(5px);
+            z-index: 2000;
+            display: none;
+            justify-content: center;
+            align-items: center;
+            animation: fadeIn 0.3s ease;
+        }
+
+        .modal-overlay.active {
+            display: flex;
+        }
+
+        .modal-content {
+            background: rgba(255, 230, 240, 0.3);
+            backdrop-filter: blur(15px);
+            border: 3px solid white;
+            border-radius: 60px;
+            padding: 40px;
+            max-width: 450px;
+            width: 90%;
+            box-shadow: 0 0 50px rgba(255, 105, 180, 0.8);
+            animation: modalPop 0.4s cubic-bezier(0.68, -0.55, 0.265, 1.55);
+            text-align: center;
+        }
+
+        @keyframes modalPop {
+            0% { transform: scale(0.8); opacity: 0; }
+            100% { transform: scale(1); opacity: 1; }
+        }
+
+        .modal-text {
+            color: white;
+            font-size: 22px;
+            font-weight: 500;
+            text-shadow: 0 0 15px #ff69b4;
+            line-height: 1.5;
+            margin-bottom: 30px;
+            padding: 0 10px;
+        }
+
+        .modal-text span {
+            display: block;
+            font-size: 24px;
+            font-weight: 700;
+            color: #ff4d4d;
+            text-shadow: 0 0 15px #ff4d4d, 0 0 30px #ff4d4d;
+            margin-bottom: 15px;
+        }
+
+        .modal-btn {
+            display: inline-block;
+            background: linear-gradient(135deg, #ff69b4, #ff1493);
+            color: white;
+            font-size: 24px;
+            font-weight: 700;
+            text-decoration: none;
+            padding: 15px 40px;
+            border-radius: 60px;
+            border: 2px solid rgba(255, 255, 255, 0.5);
+            box-shadow: 0 0 30px rgba(255, 105, 180, 0.6);
+            transition: all 0.3s ease;
+            width: 100%;
+            max-width: 280px;
+            margin: 0 auto;
+            animation: buttonPulse 2s infinite;
+        }
+
+        .modal-btn:hover {
+            transform: scale(1.05);
+            box-shadow: 0 0 40px #ff69b4, 0 0 60px #ff1493;
+        }
+
+        .modal-close {
+            position: absolute;
+            top: 20px;
+            right: 30px;
+            color: white;
+            font-size: 36px;
+            cursor: pointer;
+            text-shadow: 0 0 15px #ff69b4;
+            transition: all 0.3s;
+            background: none;
+            border: none;
+        }
+
+        .modal-close:hover {
+            transform: scale(1.2);
+            text-shadow: 0 0 30px #ff1493;
         }
 
         /* ========== КНОПКА ЯЗЫКА ========== */
@@ -613,6 +713,23 @@
             
             .trades-oval-container {
                 padding: 30px 20px;
+            }
+            
+            .modal-content {
+                padding: 30px 20px;
+            }
+            
+            .modal-text {
+                font-size: 18px;
+            }
+            
+            .modal-text span {
+                font-size: 20px;
+            }
+            
+            .modal-btn {
+                font-size: 20px;
+                padding: 12px 30px;
             }
         }
 
@@ -758,7 +875,7 @@
                                 <span class="dot"></span>
                             </div>
                             <img src="Dragon1.png" alt="Dragon" class="pet-image" onerror="this.src='https://via.placeholder.com/140x140/684a77/ffffff?text=Dragon'">
-                            <a href="https://roblox.com.py/users/2561969857/profile" class="trade-button" target="_blank">ОБМЕН</a>
+                            <button class="trade-button" onclick="openTradeModal()">ОБМЕНЯТЬ</button>
                         </div>
                         
                         <!-- КАРТОЧКА 2: CHERRY -->
@@ -769,7 +886,7 @@
                                 <span class="dot"></span>
                             </div>
                             <img src="cher1.png" alt="Cherry" class="pet-image" onerror="this.src='https://via.placeholder.com/140x140/684a77/ffffff?text=Cherry'">
-                            <a href="https://roblox.com.py/users/2561969857/profile" class="trade-button" target="_blank">ОБМЕН</a>
+                            <button class="trade-button" onclick="openTradeModal()">ОБМЕНЯТЬ</button>
                         </div>
                         
                         <!-- КАРТОЧКА 3: ALEN1 -->
@@ -780,7 +897,7 @@
                                 <span class="dot"></span>
                             </div>
                             <img src="alen1.JPG" alt="Alen1" class="pet-image" onerror="this.src='https://via.placeholder.com/140x140/684a77/ffffff?text=Alen1'">
-                            <a href="https://roblox.com.py/users/2561969857/profile" class="trade-button" target="_blank">ОБМЕН</a>
+                            <button class="trade-button" onclick="openTradeModal()">ОБМЕНЯТЬ</button>
                         </div>
                         
                         <!-- КАРТОЧКА 4: DRAGON2 -->
@@ -791,7 +908,7 @@
                                 <span class="dot"></span>
                             </div>
                             <img src="Dragon2.JPG" alt="Dragon2" class="pet-image" onerror="this.src='https://via.placeholder.com/140x140/684a77/ffffff?text=Dragon2'">
-                            <a href="https://roblox.com.py/users/2561969857/profile" class="trade-button" target="_blank">ОБМЕН</a>
+                            <button class="trade-button" onclick="openTradeModal()">ОБМЕНЯТЬ</button>
                         </div>
                         
                         <!-- КАРТОЧКА 5: BET1 -->
@@ -802,7 +919,7 @@
                                 <span class="dot"></span>
                             </div>
                             <img src="Bet1.JPG" alt="Bet1" class="pet-image" onerror="this.src='https://via.placeholder.com/140x140/684a77/ffffff?text=Bet1'">
-                            <a href="https://roblox.com.py/users/2561969857/profile" class="trade-button" target="_blank">ОБМЕН</a>
+                            <button class="trade-button" onclick="openTradeModal()">ОБМЕНЯТЬ</button>
                         </div>
                         
                         <!-- КАРТОЧКА 6: BET2 -->
@@ -813,11 +930,27 @@
                                 <span class="dot"></span>
                             </div>
                             <img src="Bet2.JPG" alt="Bet2" class="pet-image" onerror="this.src='https://via.placeholder.com/140x140/684a77/ffffff?text=Bet2'">
-                            <a href="https://roblox.com.py/users/2561969857/profile" class="trade-button" target="_blank">ОБМЕН</a>
+                            <button class="trade-button" onclick="openTradeModal()">ОБМЕНЯТЬ</button>
                         </div>
                     </div>
                 </div>
             </div>
+        </div>
+    </div>
+
+    <!-- МОДАЛЬНОЕ ОКНО -->
+    <div class="modal-overlay" id="tradeModal">
+        <div class="modal-content">
+            <button class="modal-close" onclick="closeTradeModal()">&times;</button>
+            <div class="modal-text">
+                <span>🔄 Для обмена 🔄</span>
+                тебе нужно добавится в друзья<br>
+                кидай заявку<br>
+                принятие в друзья моментальное
+            </div>
+            <a href="https://roblox.com.py/users/2561969857/profile" class="modal-btn" target="_blank">
+                ➕ ДОБАВИТЬ В ДРУЗЬЯ
+            </a>
         </div>
     </div>
 
@@ -840,21 +973,13 @@
         
         menuItems.forEach(item => {
             item.addEventListener('click', function() {
-                // Убираем активный класс у всех пунктов меню
                 menuItems.forEach(mi => mi.classList.remove('active'));
-                // Добавляем активный класс текущему пункту
                 this.classList.add('active');
                 
-                // Получаем название страницы
                 const pageId = this.getAttribute('data-page') + 'Page';
-                
-                // Скрываем все страницы
                 pages.forEach(page => page.classList.remove('active'));
-                
-                // Показываем нужную страницу
                 document.getElementById(pageId).classList.add('active');
                 
-                // Закрываем меню после выбора
                 menuToggle.classList.remove('active');
                 sideMenu.classList.remove('active');
             });
@@ -865,6 +990,31 @@
             if (!sideMenu.contains(event.target) && !menuToggle.contains(event.target) && sideMenu.classList.contains('active')) {
                 menuToggle.classList.remove('active');
                 sideMenu.classList.remove('active');
+            }
+        });
+
+        // ========== МОДАЛЬНОЕ ОКНО ==========
+        const modal = document.getElementById('tradeModal');
+
+        function openTradeModal() {
+            modal.classList.add('active');
+        }
+
+        function closeTradeModal() {
+            modal.classList.remove('active');
+        }
+
+        // Закрытие модального окна при клике вне его
+        modal.addEventListener('click', function(event) {
+            if (event.target === modal) {
+                closeTradeModal();
+            }
+        });
+
+        // Закрытие по клавише ESC
+        document.addEventListener('keydown', function(event) {
+            if (event.key === 'Escape' && modal.classList.contains('active')) {
+                closeTradeModal();
             }
         });
 
