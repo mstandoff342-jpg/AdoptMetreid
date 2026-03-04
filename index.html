@@ -15,21 +15,7 @@
 
         body {
             min-height: 100vh;
-            background-color: #ffd0dd;
-            background-image: 
-                radial-gradient(circle at 10% 20%, rgba(255, 255, 255, 0.5) 4px, transparent 4px),
-                radial-gradient(circle at 25% 60%, rgba(255, 255, 255, 0.6) 8px, transparent 8px),
-                radial-gradient(circle at 70% 15%, rgba(255, 255, 255, 0.5) 6px, transparent 6px),
-                radial-gradient(circle at 85% 45%, rgba(255, 255, 255, 0.7) 5px, transparent 5px),
-                radial-gradient(circle at 40% 80%, rgba(255, 255, 255, 0.5) 7px, transparent 7px),
-                radial-gradient(circle at 90% 75%, rgba(255, 255, 255, 0.6) 4px, transparent 4px),
-                radial-gradient(circle at 15% 90%, rgba(255, 255, 255, 0.5) 6px, transparent 6px),
-                radial-gradient(circle at 55% 30%, rgba(255, 255, 255, 0.6) 5px, transparent 5px);
-            background-size: 200px 200px, 250px 250px, 180px 180px, 220px 220px,
-                             190px 190px, 210px 210px, 230px 230px, 240px 240px;
-            background-position: 0% 0%, 10% 20%, 30% 70%, 80% 10%,
-                                 50% 90%, 95% 40%, 5% 85%, 60% 25%;
-            background-repeat: repeat;
+            background-color: #684a77; /* Фиолетовый фон */
             display: flex;
             justify-content: center;
             padding: 20px;
@@ -97,7 +83,7 @@
             left: -350px;
             width: 320px;
             height: 100vh;
-            background: rgba(255, 230, 240, 0.3);
+            background: rgba(104, 74, 119, 0.3);
             backdrop-filter: blur(15px);
             border-right: 2px solid rgba(255, 255, 255, 0.3);
             box-shadow: 0 0 40px rgba(255, 105, 180, 0.3);
@@ -245,7 +231,7 @@
             max-width: 700px;
             margin-left: auto;
             margin-right: auto;
-            margin-top: 100px; /* Отступ для кнопки меню */
+            margin-top: 100px;
         }
 
         .profile-header {
@@ -399,7 +385,7 @@
 
         /* ========== СТРАНИЦА ОБМЕНОВ ========== */
         .trades-page {
-            padding-top: 100px; /* Отступ для кнопки меню */
+            padding-top: 100px;
         }
 
         .trades-title {
@@ -598,6 +584,88 @@
             .side-menu {
                 width: 280px;
             }
+            
+            .profile-card {
+                margin-top: 80px;
+                padding: 20px;
+            }
+            
+            .user-info h1 {
+                font-size: 32px;
+            }
+            
+            .stat-value {
+                font-size: 24px;
+            }
+            
+            .add-friend-btn {
+                font-size: 20px;
+                padding: 12px 30px;
+            }
+            
+            .greeting-oval {
+                padding: 20px;
+            }
+            
+            .trades-title {
+                font-size: 28px;
+            }
+            
+            .trades-oval-container {
+                padding: 30px 20px;
+            }
+        }
+
+        @media (max-width: 450px) {
+            .stats-container {
+                gap: 20px;
+            }
+            
+            .menu-toggle {
+                width: 45px;
+                height: 45px;
+            }
+            
+            .menu-toggle span {
+                width: 25px;
+            }
+            
+            .side-menu {
+                width: 260px;
+            }
+            
+            .menu-profile h3 {
+                font-size: 20px;
+            }
+            
+            .menu-item {
+                padding: 15px 20px;
+                font-size: 20px;
+            }
+            
+            .greeting-oval-content .red-part {
+                font-size: 24px;
+            }
+            
+            .greeting-oval-content .main-text {
+                font-size: 20px;
+            }
+            
+            .greeting-oval-content .adopt-text {
+                font-size: 28px;
+            }
+            
+            .greeting-oval-content .friend-text {
+                font-size: 18px;
+            }
+            
+            .lang-switcher {
+                width: 45px;
+                height: 45px;
+                font-size: 24px;
+                bottom: 20px;
+                right: 20px;
+            }
         }
     </style>
 </head>
@@ -613,7 +681,7 @@
     <div class="side-menu" id="sideMenu">
         <div class="menu-profile">
             <div class="menu-avatar">
-                <img src="avatar.jpg" alt="Liza6666" onerror="this.src='https://via.placeholder.com/90x90/ffd0dd/ffffff?text=User'">
+                <img src="avatar.jpg" alt="Liza6666" onerror="this.src='https://via.placeholder.com/90x90/684a77/ffffff?text=User'">
             </div>
             <h3>Liza6666</h3>
             <p>Top Trader</p>
@@ -637,7 +705,7 @@
             <div class="profile-card">
                 <div class="profile-header">
                     <div class="avatar-circle">
-                        <img src="avatar.jpg" alt="Liza6666" onerror="this.src='https://via.placeholder.com/100x100/ffd0dd/ffffff?text=User'">
+                        <img src="avatar.jpg" alt="Liza6666" onerror="this.src='https://via.placeholder.com/100x100/684a77/ffffff?text=User'">
                     </div>
 
                     <div class="user-info">
@@ -786,7 +854,7 @@
                 // Показываем нужную страницу
                 document.getElementById(pageId).classList.add('active');
                 
-                // Закрываем меню после выбора (опционально)
+                // Закрываем меню после выбора
                 menuToggle.classList.remove('active');
                 sideMenu.classList.remove('active');
             });
