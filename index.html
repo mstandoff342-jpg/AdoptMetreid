@@ -459,8 +459,15 @@
             letter-spacing: 2px;
             z-index: 2;
             color: #ff4d4d;
-            text-shadow: 0 0 20px #ff4d4d, 0 0 40px #ff4d4d;
+            text-shadow: none;
             box-shadow: 0 0 30px rgba(255, 75, 75, 0.5);
+        }
+
+        /* Legendary заголовок разделителя */
+        .rarity-text.legendary {
+            color: black;
+            text-shadow: none;
+            box-shadow: 0 0 30px rgba(255, 255, 255, 0.5);
         }
 
         /* СЕТКА КАРТОЧЕК 3 В РЯД */
@@ -514,7 +521,7 @@
             letter-spacing: 1px;
         }
 
-        /* Ultra-rare заголовок - красный со свечением */
+        /* Ultra-rare заголовок - красный без свечения */
         .trade-card .ultra-rare-title {
             display: flex;
             align-items: center;
@@ -528,14 +535,12 @@
             height: 5px;
             background-color: #ff4d4d;
             border-radius: 50%;
-            box-shadow: 0 0 10px #ff4d4d;
         }
 
         .trade-card .ultra-rare-title span {
             font-size: 18px;
             font-weight: 800;
             color: #ff4d4d;
-            text-shadow: 0 0 15px #ff4d4d, 0 0 30px #ff4d4d;
             letter-spacing: 1px;
         }
 
@@ -936,6 +941,11 @@
                 <h2 class="trades-title">🐱 Мои обмены 🐱</h2>
                 
                 <div class="trades-oval-container">
+                    <!-- РАЗДЕЛИТЕЛЬ LEGENDARY -->
+                    <div class="rarity-divider">
+                        <span class="rarity-text legendary">LEGENDARY</span>
+                    </div>
+
                     <!-- LEGENDARY КАРТОЧКИ -->
                     <div class="trades-grid">
                         <!-- КАРТОЧКА 1: DRAGON1 -->
