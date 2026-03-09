@@ -16,6 +16,16 @@
         body {
             min-height: 100vh;
             background-color: #684a77;
+            /* Эффект песка - мелкие точки на фоне */
+            background-image: 
+                radial-gradient(circle at 30% 40%, rgba(255,255,255,0.03) 1px, transparent 1px),
+                radial-gradient(circle at 70% 80%, rgba(255,255,255,0.02) 2px, transparent 2px),
+                radial-gradient(circle at 10% 90%, rgba(255,255,255,0.03) 1px, transparent 1px),
+                radial-gradient(circle at 85% 15%, rgba(255,255,255,0.02) 2px, transparent 2px),
+                radial-gradient(circle at 45% 25%, rgba(255,255,255,0.02) 1px, transparent 1px),
+                radial-gradient(circle at 95% 65%, rgba(255,255,255,0.03) 2px, transparent 2px);
+            background-size: 50px 50px, 80px 80px, 60px 60px, 100px 100px, 70px 70px, 90px 90px;
+            background-position: 0% 0%, 10% 20%, 30% 70%, 80% 10%, 50% 90%, 95% 40%;
             display: flex;
             justify-content: center;
             padding: 20px;
