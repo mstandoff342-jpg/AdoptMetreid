@@ -16,7 +16,6 @@
         body {
             min-height: 100vh;
             background-color: #684a77;
-            /* Эффект песка - мелкие точки на фоне */
             background-image: 
                 radial-gradient(circle at 30% 40%, rgba(255,255,255,0.03) 1px, transparent 1px),
                 radial-gradient(circle at 70% 80%, rgba(255,255,255,0.02) 2px, transparent 2px),
@@ -391,6 +390,152 @@
             font-weight: 500;
             text-shadow: 0 0 10px #ff69b4;
             margin-top: 10px;
+        }
+
+        /* ========== СТРАНИЦА ПОИСКА ========== */
+        .search-page {
+            padding-top: 100px;
+        }
+
+        .search-title {
+            text-align: center;
+            color: white;
+            font-size: 36px;
+            font-weight: 700;
+            text-shadow: 0 0 20px #ff1493, 0 0 40px #ff69b4;
+            margin-bottom: 30px;
+            animation: titleGlow 3s infinite;
+        }
+
+        .search-container {
+            background: transparent;
+            border: 3px solid white;
+            border-radius: 80px;
+            padding: 40px 30px;
+            box-shadow: 0 0 20px #ff0000, 0 0 40px #00ff00, 0 0 60px #0000ff, 0 0 80px #ff00ff;
+            animation: rgbGlow 4s infinite alternate;
+            margin-bottom: 40px;
+        }
+
+        .search-box {
+            display: flex;
+            justify-content: center;
+            gap: 15px;
+            margin-bottom: 30px;
+            flex-wrap: wrap;
+        }
+
+        .search-input {
+            background: rgba(255, 255, 255, 0.15);
+            backdrop-filter: blur(5px);
+            border: 2px solid rgba(255, 255, 255, 0.5);
+            border-radius: 60px;
+            padding: 15px 25px;
+            font-size: 18px;
+            width: 300px;
+            color: white;
+            outline: none;
+            transition: all 0.3s;
+        }
+
+        .search-input::placeholder {
+            color: rgba(255, 255, 255, 0.6);
+        }
+
+        .search-input:focus {
+            border-color: #ff69b4;
+            box-shadow: 0 0 20px #ff69b4;
+        }
+
+        .search-button {
+            background: linear-gradient(135deg, #ff69b4, #ff1493);
+            color: white;
+            font-size: 18px;
+            font-weight: 700;
+            padding: 15px 35px;
+            border-radius: 60px;
+            border: 2px solid rgba(255, 255, 255, 0.5);
+            cursor: pointer;
+            transition: all 0.3s;
+            text-transform: uppercase;
+        }
+
+        .search-button:hover {
+            transform: scale(1.05);
+            box-shadow: 0 0 25px #ff1493, 0 0 40px #ff69b4;
+        }
+
+        .search-result {
+            display: flex;
+            justify-content: center;
+            margin-top: 20px;
+        }
+
+        .error-message {
+            text-align: center;
+            color: #ff4d4d;
+            font-size: 24px;
+            font-weight: 600;
+            text-shadow: 0 0 15px #ff4d4d, 0 0 30px #ff4d4d;
+            padding: 30px;
+            background: rgba(0, 0, 0, 0.2);
+            border-radius: 40px;
+            border: 2px solid rgba(255, 255, 255, 0.3);
+        }
+
+        .found-card {
+            background: rgba(0, 0, 0, 0.2);
+            backdrop-filter: blur(5px);
+            border: 3px solid white;
+            border-radius: 30px;
+            padding: 25px;
+            display: inline-block;
+            text-align: center;
+            box-shadow: 0 0 30px rgba(255, 105, 180, 0.5);
+            transition: all 0.3s ease;
+            animation: fadeInScale 0.5s ease;
+        }
+
+        @keyframes fadeInScale {
+            from { opacity: 0; transform: scale(0.9); }
+            to { opacity: 1; transform: scale(1); }
+        }
+
+        .found-card .pet-image {
+            width: 180px;
+            height: 180px;
+            border-radius: 25px;
+            border: 2px solid white;
+            box-shadow: 0 0 25px rgba(255, 105, 180, 0.8);
+            object-fit: cover;
+            margin-bottom: 15px;
+        }
+
+        .found-card .pet-title {
+            font-size: 24px;
+            font-weight: 800;
+            color: white;
+            text-shadow: 0 0 10px #ff69b4;
+            margin-bottom: 15px;
+        }
+
+        .found-card .trade-button {
+            display: inline-block;
+            background: linear-gradient(135deg, #ff69b4, #ff1493);
+            color: white;
+            font-size: 18px;
+            font-weight: 700;
+            padding: 10px 30px;
+            border-radius: 40px;
+            border: 2px solid rgba(255, 255, 255, 0.5);
+            cursor: pointer;
+            transition: all 0.3s;
+            text-transform: uppercase;
+        }
+
+        .found-card .trade-button:hover {
+            transform: scale(1.05);
+            box-shadow: 0 0 25px #ff1493, 0 0 40px #ff69b4;
         }
 
         /* ========== СТРАНИЦА ОБМЕНОВ ========== */
@@ -850,6 +995,16 @@
                 bottom: 20px;
                 right: 20px;
             }
+            
+            .search-box {
+                flex-direction: column;
+                align-items: center;
+            }
+            
+            .search-input {
+                width: 100%;
+                max-width: 280px;
+            }
         }
 
         @media (max-width: 450px) {
@@ -961,12 +1116,16 @@
                 <span class="icon">🐱</span>
                 <span id="menuTrades">Обмены</span>
             </div>
+            <div class="menu-item" data-page="search">
+                <span class="icon">🔍</span>
+                <span id="menuSearch">Поиск</span>
+            </div>
         </div>
     </div>
 
     <div class="container">
         <!-- СТРАНИЦА ПРОФИЛЯ -->
-        <div class="page active" id="profilePage">
+        <div class="page" id="profilePage">
             <div class="profile-card">
                 <div class="profile-header">
                     <div class="avatar-circle">
@@ -1216,6 +1375,21 @@
                 </div>
             </div>
         </div>
+
+        <!-- СТРАНИЦА ПОИСКА -->
+        <div class="page" id="searchPage">
+            <div class="search-page">
+                <h2 class="search-title" id="searchTitle">🔍 Поиск питомца 🔍</h2>
+                
+                <div class="search-container">
+                    <div class="search-box">
+                        <input type="text" id="searchInput" class="search-input" placeholder="Введите название питомца..." autocomplete="off">
+                        <button id="searchBtn" class="search-button" onclick="searchPet()">🔍 НАЙТИ</button>
+                    </div>
+                    <div id="searchResult" class="search-result"></div>
+                </div>
+            </div>
+        </div>
     </div>
 
     <!-- МОДАЛЬНОЕ ОКНО -->
@@ -1238,6 +1412,79 @@
     <div class="lang-switcher" id="langSwitcher">🇷🇺</div>
 
     <script>
+        // ========== БАЗА ДАННЫХ ПИТОМЦЕВ ==========
+        const petsDatabase = {
+            // LEGENDARY
+            "dragon": { name: "Dragon", image: "Dragon1.png", rarity: "legendary", rarityText: "LEGENDARY" },
+            "cherry": { name: "Cherry", image: "cher1.png", rarity: "legendary", rarityText: "LEGENDARY" },
+            "alen1": { name: "Alen1", image: "alen1.JPG", rarity: "legendary", rarityText: "LEGENDARY" },
+            "dragon2": { name: "Dragon2", image: "Dragon2.JPG", rarity: "legendary", rarityText: "LEGENDARY" },
+            "bet1": { name: "Bet1", image: "Bet1.JPG", rarity: "legendary", rarityText: "LEGENDARY" },
+            "bet2": { name: "Bet2", image: "Bet2.JPG", rarity: "legendary", rarityText: "LEGENDARY" },
+            "fly1": { name: "Fly1", image: "Fly1.JPG", rarity: "legendary", rarityText: "LEGENDARY" },
+            "uni1": { name: "Uni1", image: "Uni1.JPG", rarity: "legendary", rarityText: "LEGENDARY" },
+            "uni2": { name: "Uni2", image: "Uni2.JPG", rarity: "legendary", rarityText: "LEGENDARY" },
+            // ULTRA-RARE
+            "pan1": { name: "Pan1", image: "Pan1.JPG", rarity: "ultra-rare", rarityText: "ULTRA-RARE" },
+            "pin1": { name: "Pin1", image: "Pin1.JPG", rarity: "ultra-rare", rarityText: "ULTRA-RARE" },
+            "pu1": { name: "Pu1", image: "Pu1.JPG", rarity: "ultra-rare", rarityText: "ULTRA-RARE" },
+            "pch1": { name: "Pch1", image: "Pch1.JPG", rarity: "ultra-rare", rarityText: "ULTRA-RARE" },
+            "lig1": { name: "Lig1", image: "Lig1.JPG", rarity: "ultra-rare", rarityText: "ULTRA-RARE" },
+            // RARE
+            "pig1": { name: "Pig1", image: "Pig1.JPG", rarity: "rare", rarityText: "RARE" },
+            "mu1": { name: "Mu1", image: "Mu1.JPG", rarity: "rare", rarityText: "RARE" }
+        };
+
+        function searchPet() {
+            const input = document.getElementById('searchInput');
+            const query = input.value.trim().toLowerCase();
+            const resultDiv = document.getElementById('searchResult');
+            
+            if (query === "") {
+                resultDiv.innerHTML = '<div class="error-message">❌ Введите название питомца!</div>';
+                return;
+            }
+            
+            const pet = petsDatabase[query];
+            
+            if (pet) {
+                let rarityColor = "";
+                let rarityClass = "";
+                if (pet.rarity === "legendary") {
+                    rarityColor = "black";
+                    rarityClass = "legendary-title";
+                } else if (pet.rarity === "ultra-rare") {
+                    rarityColor = "#ff4d4d";
+                    rarityClass = "ultra-rare-title";
+                } else {
+                    rarityColor = "#4CAF50";
+                    rarityClass = "rare-title";
+                }
+                
+                resultDiv.innerHTML = `
+                    <div class="found-card">
+                        <div class="${rarityClass}" style="display: flex; align-items: center; justify-content: center; gap: 8px; margin-bottom: 10px;">
+                            <span class="dot" style="width: 5px; height: 5px; background-color: ${rarityColor}; border-radius: 50%;"></span>
+                            <span style="font-size: 18px; font-weight: 800; color: ${rarityColor}; letter-spacing: 1px;">${pet.rarityText}</span>
+                            <span class="dot" style="width: 5px; height: 5px; background-color: ${rarityColor}; border-radius: 50%;"></span>
+                        </div>
+                        <img src="${pet.image}" alt="${pet.name}" class="pet-image" onerror="this.src='https://via.placeholder.com/180x180/684a77/ffffff?text=${pet.name}'">
+                        <div class="pet-title">${pet.name}</div>
+                        <button class="trade-button" onclick="openTradeModal()">ОБМЕНЯТЬ</button>
+                    </div>
+                `;
+            } else {
+                resultDiv.innerHTML = `<div class="error-message">❌ Ошибка! Питомец "${input.value}" не найден!<br>Проверьте правильность названия.</div>`;
+            }
+        }
+        
+        // Добавляем обработчик на Enter
+        document.getElementById('searchInput').addEventListener('keypress', function(e) {
+            if (e.key === 'Enter') {
+                searchPet();
+            }
+        });
+
         // ========== МЕНЮ ==========
         const menuToggle = document.getElementById('menuToggle');
         const sideMenu = document.getElementById('sideMenu');
@@ -1251,14 +1498,22 @@
         const menuItems = document.querySelectorAll('.menu-item');
         const pages = document.querySelectorAll('.page');
         
+        function switchToPage(pageId) {
+            pages.forEach(page => page.classList.remove('active'));
+            document.getElementById(pageId).classList.add('active');
+        }
+        
+        // Делаем активной страницу профиля по умолчанию
+        switchToPage('profilePage');
+        document.querySelector('.menu-item[data-page="profile"]').classList.add('active');
+        
         menuItems.forEach(item => {
             item.addEventListener('click', function() {
                 menuItems.forEach(mi => mi.classList.remove('active'));
                 this.classList.add('active');
                 
                 const pageId = this.getAttribute('data-page') + 'Page';
-                pages.forEach(page => page.classList.remove('active'));
-                document.getElementById(pageId).classList.add('active');
+                switchToPage(pageId);
                 
                 menuToggle.classList.remove('active');
                 sideMenu.classList.remove('active');
@@ -1284,14 +1539,12 @@
             modal.classList.remove('active');
         }
 
-        // Закрытие модального окна при клике вне его
         modal.addEventListener('click', function(event) {
             if (event.target === modal) {
                 closeTradeModal();
             }
         });
 
-        // Закрытие по клавише ESC
         document.addEventListener('keydown', function(event) {
             if (event.key === 'Escape' && modal.classList.contains('active')) {
                 closeTradeModal();
@@ -1302,7 +1555,6 @@
         let currentLang = 'ru';
         const langButton = document.getElementById('langSwitcher');
         
-        // Элементы для перевода
         const stat1Label = document.getElementById('stat1Label');
         const stat2Label = document.getElementById('stat2Label');
         const addFriendText = document.getElementById('addFriendText');
@@ -1311,6 +1563,7 @@
         const greetingFriend = document.getElementById('greetingFriend');
         const menuProfile = document.getElementById('menuProfile');
         const menuTrades = document.getElementById('menuTrades');
+        const menuSearch = document.getElementById('menuSearch');
         const menuName = document.getElementById('menuName');
         const menuTitle = document.getElementById('menuTitle');
         const profileName = document.getElementById('profileName');
@@ -1319,13 +1572,13 @@
         const legendaryTitle = document.getElementById('legendaryTitle');
         const ultraRareTitle = document.getElementById('ultraRareTitle');
         const rareTitle = document.getElementById('rareTitle');
+        const searchTitle = document.getElementById('searchTitle');
         const modalTitle = document.getElementById('modalTitle');
         const modalLine1 = document.getElementById('modalLine1');
         const modalLine2 = document.getElementById('modalLine2');
         const modalLine3 = document.getElementById('modalLine3');
         const modalBtnText = document.getElementById('modalBtnText');
         
-        // Все кнопки trade-button
         const tradeButtons = document.querySelectorAll('.trade-button');
         
         const texts = {
@@ -1338,6 +1591,7 @@
                 greetingFriend: 'Добавляйся в друзья для обмена 🎁',
                 menuProfile: 'Профиль',
                 menuTrades: 'Обмены',
+                menuSearch: 'Поиск',
                 menuName: 'Liza6666',
                 menuTitle: 'Top Trader',
                 profileName: 'Liza6666',
@@ -1346,6 +1600,7 @@
                 legendaryTitle: 'LEGENDARY',
                 ultraRareTitle: 'ULTRA-RARE',
                 rareTitle: 'RARE',
+                searchTitle: '🔍 Поиск питомца 🔍',
                 modalTitle: '🔄 Для обмена 🔄',
                 modalLine1: 'тебе нужно добавится в друзья',
                 modalLine2: 'кидай заявку',
@@ -1362,6 +1617,7 @@
                 greetingFriend: 'Add me as a friend to trade 🎁',
                 menuProfile: 'Profile',
                 menuTrades: 'Trades',
+                menuSearch: 'Search',
                 menuName: 'Liza6666',
                 menuTitle: 'Top Trader',
                 profileName: 'Liza6666',
@@ -1370,6 +1626,7 @@
                 legendaryTitle: 'LEGENDARY',
                 ultraRareTitle: 'ULTRA-RARE',
                 rareTitle: 'RARE',
+                searchTitle: '🔍 Search Pet 🔍',
                 modalTitle: '🔄 For Trade 🔄',
                 modalLine1: 'you need to add me as a friend',
                 modalLine2: 'send a request',
@@ -1381,7 +1638,6 @@
         
         langButton.addEventListener('click', function() {
             if (currentLang === 'ru') {
-                // Переключаем на английский
                 stat1Label.textContent = texts.en.stat1;
                 stat2Label.textContent = texts.en.stat2;
                 addFriendText.textContent = texts.en.addFriend;
@@ -1390,6 +1646,7 @@
                 greetingFriend.textContent = texts.en.greetingFriend;
                 menuProfile.textContent = texts.en.menuProfile;
                 menuTrades.textContent = texts.en.menuTrades;
+                menuSearch.textContent = texts.en.menuSearch;
                 menuName.textContent = texts.en.menuName;
                 menuTitle.textContent = texts.en.menuTitle;
                 profileName.textContent = texts.en.profileName;
@@ -1398,13 +1655,13 @@
                 legendaryTitle.textContent = texts.en.legendaryTitle;
                 ultraRareTitle.textContent = texts.en.ultraRareTitle;
                 rareTitle.textContent = texts.en.rareTitle;
+                searchTitle.textContent = texts.en.searchTitle;
                 modalTitle.innerHTML = texts.en.modalTitle;
                 modalLine1.textContent = texts.en.modalLine1;
                 modalLine2.textContent = texts.en.modalLine2;
                 modalLine3.textContent = texts.en.modalLine3;
                 modalBtnText.textContent = texts.en.modalBtn;
                 
-                // Меняем текст на всех кнопках trade-button
                 tradeButtons.forEach(btn => {
                     btn.textContent = texts.en.tradeBtn;
                 });
@@ -1412,7 +1669,6 @@
                 langButton.textContent = '🇬🇧';
                 currentLang = 'en';
             } else {
-                // Переключаем на русский
                 stat1Label.textContent = texts.ru.stat1;
                 stat2Label.textContent = texts.ru.stat2;
                 addFriendText.textContent = texts.ru.addFriend;
@@ -1421,6 +1677,7 @@
                 greetingFriend.textContent = texts.ru.greetingFriend;
                 menuProfile.textContent = texts.ru.menuProfile;
                 menuTrades.textContent = texts.ru.menuTrades;
+                menuSearch.textContent = texts.ru.menuSearch;
                 menuName.textContent = texts.ru.menuName;
                 menuTitle.textContent = texts.ru.menuTitle;
                 profileName.textContent = texts.ru.profileName;
@@ -1429,13 +1686,13 @@
                 legendaryTitle.textContent = texts.ru.legendaryTitle;
                 ultraRareTitle.textContent = texts.ru.ultraRareTitle;
                 rareTitle.textContent = texts.ru.rareTitle;
+                searchTitle.textContent = texts.ru.searchTitle;
                 modalTitle.innerHTML = texts.ru.modalTitle;
                 modalLine1.textContent = texts.ru.modalLine1;
                 modalLine2.textContent = texts.ru.modalLine2;
                 modalLine3.textContent = texts.ru.modalLine3;
                 modalBtnText.textContent = texts.ru.modalBtn;
                 
-                // Меняем текст на всех кнопках trade-button
                 tradeButtons.forEach(btn => {
                     btn.textContent = texts.ru.tradeBtn;
                 });
@@ -1445,7 +1702,6 @@
             }
         });
 
-        // Заглушки для изображений
         document.querySelectorAll('.pet-image').forEach(img => {
             img.onerror = function() {
                 const alt = this.alt;
@@ -1455,4 +1711,3 @@
     </script>
 </body>
 </html>
-
